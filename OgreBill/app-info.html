@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OgreBill — App Information</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --muted: #555;
+      --accent: #4f46e5;
+      --accent-light: #eef2ff;
+      --accent2: #059669;
+      --accent2-light: #ecfdf5;
+      --border: #e5e7eb;
+      --radius: 12px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f14;
+        --card: #1a1a24;
+        --text: #e4e4ef;
+        --muted: #9ca3af;
+        --accent: #818cf8;
+        --accent-light: #1e1b4b;
+        --accent2: #34d399;
+        --accent2-light: #0d2a1f;
+        --border: #2d2d3a;
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 0;
+    }
+    .hero {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed, #a855f7);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1.5rem 2.5rem;
+    }
+    .hero h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; }
+    .hero .subtitle {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+    .hero .version-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.4rem 1.2rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      backdrop-filter: blur(4px);
+      letter-spacing: 0.02em;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* Summary */
+    .summary-card {
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .summary-card p { font-size: 0.95rem; color: var(--text); }
+
+    /* Sections */
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .section-header .icon { font-size: 1.25rem; }
+    .section-header h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .section p, .section li {
+      font-size: 0.925rem;
+      color: var(--muted);
+    }
+    .section p { margin-bottom: 0.75rem; }
+    .section p:last-child { margin-bottom: 0; }
+
+    /* Feature grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.75rem;
+      background: var(--bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .feature-item .f-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 0.1rem;
+    }
+    .feature-item .f-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .feature-item .f-text strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.9rem;
+      margin-bottom: 0.15rem;
+    }
+
+    /* Tech stack */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .tech-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--bg);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .tech-item .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-blue { background: #3b82f6; }
+    .dot-green { background: #10b981; }
+    .dot-orange { background: #f59e0b; }
+    .dot-purple { background: #8b5cf6; }
+    .dot-red { background: #ef4444; }
+    .dot-teal { background: #14b8a6; }
+
+    /* Highlight card */
+    .highlight-card {
+      background: var(--accent2-light);
+      border: 1px solid var(--accent2);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .highlight-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .highlight-card p { font-size: 0.925rem; color: var(--text); margin-bottom: 0.5rem; }
+    .highlight-card p:last-child { margin-bottom: 0; }
+    .highlight-card strong { color: var(--accent2); }
+    .highlight-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .highlight-card ul li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding-left: 1.4rem;
+      position: relative;
+      margin-bottom: 0.35rem;
+    }
+    .highlight-card ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+      font-weight: 700;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .feature-grid, .tech-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 2.25rem; }
+      .container { padding: 2.5rem 2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>OgreBill</h1>
+    <p class="subtitle">Offline-First Invoicing &amp; Business Management</p>
+    <span class="version-badge">Version 1.0.0</span>
+  </div>
+
+  <div class="container">
+
+    <div class="summary-card">
+      <p>
+        OgreBill is a privacy-first invoicing app that runs entirely on your device.
+        Create professional invoices, track expenses, manage clients, and view analytics —
+        all without an internet connection.
+      </p>
+    </div>
+
+    <!-- Features -->
+    <div class="section">
+      <div class="section-header">
+        <span class="icon">⚡</span>
+        <h2>Features</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <span class="f-icon">📄</span>
+          <div class="f-text">
+            <strong>Invoicing</strong>
+            Create, manage, and track invoices with PDF export
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="f-icon">👥</span>
+          <div class="f-text">
+            <strong>Client Management</strong>
+            Store client details and track their invoices
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="f-icon">💰</span>
+          <div class="f-text">
+            <strong>Expense Tracking</strong>
+            Log expenses by category with analytics
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="f-icon">🏷️</span>
+          <div class="f-text">
+            <strong>Services &amp; Taxes</strong>
+            Reusable services, taxes, and discount templates
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="f-icon">📊</span>
+          <div class="f-text">
+            <strong>Analytics</strong>
+            Revenue, expenses, profit trends, and insights
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="f-icon">📤</span>
+          <div class="f-text">
+            <strong>Export &amp; Share</strong>
+            PDF invoices, Excel reports, QR code sharing
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="f-icon">💾</span>
+          <div class="f-text">
+            <strong>Backup &amp; Restore</strong>
+            Local backups with one-tap restore
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="f-icon">🔒</span>
+          <div class="f-text">
+            <strong>App Lock</strong>
+            Biometric authentication (Face ID / Fingerprint)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy highlight -->
+    <div class="highlight-card">
+      <div class="icon">🛡️</div>
+      <p><strong>Privacy by Design</strong></p>
+      <ul>
+        <li>All data stored locally on your device</li>
+        <li>No analytics, tracking, or advertising SDKs</li>
+        <li>No account or sign-up required</li>
+        <li>Data leaves only when you export or share</li>
+        <li>Works fully offline — no internet needed</li>
+      </ul>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="section">
+      <div class="section-header">
+        <span class="icon">🛠️</span>
+        <h2>Built With</h2>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <span class="dot dot-blue"></span> Flutter &amp; Dart
+        </div>
+        <div class="tech-item">
+          <span class="dot dot-green"></span> SQLite (sqflite)
+        </div>
+        <div class="tech-item">
+          <span class="dot dot-orange"></span> PDF Generation
+        </div>
+        <div class="tech-item">
+          <span class="dot dot-purple"></span> FL Chart
+        </div>
+        <div class="tech-item">
+          <span class="dot dot-red"></span> Material Design 3
+        </div>
+        <div class="tech-item">
+          <span class="dot dot-teal"></span> Local Authentication
+        </div>
+      </div>
+    </div>
+
+    <!-- Platforms -->
+    <div class="section">
+      <div class="section-header">
+        <span class="icon">📱</span>
+        <h2>Platforms</h2>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <span class="dot dot-green"></span> Android
+        </div>
+        <div class="tech-item">
+          <span class="dot dot-blue"></span> iOS
+        </div>
+      </div>
+    </div>
+
+    <!-- Developer -->
+    <div class="section">
+      <div class="section-header">
+        <span class="icon">👤</span>
+        <h2>Developer</h2>
+      </div>
+      <p>
+        OgreBill is developed and maintained by <strong>Suman Kumar</strong>,
+        an independent developer based in Germany.
+      </p>
+      <p>
+        <strong>Contact:</strong>
+        <a href="mailto:suman.kumar1@outlook.com" style="color: var(--accent); text-decoration: none;">suman.kumar1@outlook.com</a>
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 Suman Kumar · OgreBill</p>
+    <p>
+      <a href="privacy-policy.html">Privacy Policy</a> ·
+      <a href="terms-of-service.html">Terms of Service</a> ·
+      <a href="impressum.html">Impressum</a> ·
+      <a href="open-source-licenses.html">Open-Source Licenses</a>
+    </p>
+  </div>
+
+</body>
+</html>

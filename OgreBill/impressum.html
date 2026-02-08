@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OgreBill — Impressum &amp; Contact</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --muted: #555;
+      --accent: #d97706;
+      --accent-light: #fffbeb;
+      --border: #e5e7eb;
+      --radius: 12px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f14;
+        --card: #1a1a24;
+        --text: #e4e4ef;
+        --muted: #9ca3af;
+        --accent: #fbbf24;
+        --accent-light: #292317;
+        --border: #2d2d3a;
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 0;
+    }
+    .hero {
+      background: linear-gradient(135deg, #d97706, #f59e0b);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1.5rem 2.5rem;
+    }
+    .hero h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; }
+    .hero .badge {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.3rem 0.9rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .section-header .icon { font-size: 1.25rem; }
+    .section-header h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .section p, .section li {
+      font-size: 0.925rem;
+      color: var(--muted);
+    }
+    .section p { margin-bottom: 0.75rem; }
+    .section p:last-child { margin-bottom: 0; }
+    .info-row {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.925rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label {
+      min-width: 140px;
+      font-weight: 700;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .info-value {
+      color: var(--muted);
+    }
+    .info-value a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .info-value a:hover { text-decoration: underline; }
+
+    /* Feedback card */
+    .feedback-card {
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .feedback-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .feedback-card p { font-size: 0.95rem; color: var(--text); margin-bottom: 0.5rem; }
+    .feedback-card p:last-child { margin-bottom: 0; }
+    .feedback-card strong { color: var(--accent); }
+    .feedback-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .feedback-card a:hover { text-decoration: underline; }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    @media (max-width: 480px) {
+      .info-row { flex-direction: column; gap: 0.2rem; }
+      .info-label { min-width: unset; }
+    }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 2rem; }
+      .container { padding: 2.5rem 2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>Impressum &amp; Contact</h1>
+    <span class="badge">App Owner Information</span>
+  </div>
+
+  <div class="container">
+
+    <!-- Feedback -->
+    <div class="feedback-card">
+      <div class="icon">💬</div>
+      <p>
+        <strong>Have feedback, found a bug, or need help?</strong>
+      </p>
+      <p>
+        We'd love to hear from you. Send us an email and we'll get back to you as soon as possible.
+      </p>
+      <p>
+        📧 <a href="mailto:suman.kumar1@outlook.com?subject=OgreBill%20Feedback">suman.kumar1@outlook.com</a>
+      </p>
+    </div>
+
+    <!-- Responsible Person -->
+    <div class="section">
+      <div class="section-header">
+        <span class="icon">👤</span>
+        <h2>Responsible Person</h2>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Name</span>
+        <span class="info-value">Suman Kumar</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Role</span>
+        <span class="info-value">Independent Developer &amp; Publisher</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Email</span>
+        <span class="info-value"><a href="mailto:suman.kumar1@outlook.com">suman.kumar1@outlook.com</a></span>
+      </div>
+    </div>
+
+    <!-- App Information -->
+    <div class="section">
+      <div class="section-header">
+        <span class="icon">📱</span>
+        <h2>App Information</h2>
+      </div>
+      <div class="info-row">
+        <span class="info-label">App Name</span>
+        <span class="info-value">OgreBill</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Type</span>
+        <span class="info-value">Offline-first invoicing &amp; business management</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Platforms</span>
+        <span class="info-value">Android, iOS</span>
+      </div>
+    </div>
+
+    <!-- Dispute Resolution -->
+    <div class="section">
+      <div class="section-header">
+        <span class="icon">⚖️</span>
+        <h2>Dispute Resolution</h2>
+      </div>
+      <p>
+        The European Commission provides an online dispute resolution (ODR) platform at
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener" style="color: var(--accent);">https://ec.europa.eu/consumers/odr/</a>.
+      </p>
+      <p>
+        We are neither obliged nor willing to participate in dispute resolution proceedings
+        before a consumer arbitration board. For any concerns, please contact us directly
+        via email.
+      </p>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="section">
+      <div class="section-header">
+        <span class="icon">📌</span>
+        <h2>Disclaimer</h2>
+      </div>
+      <p>
+        OgreBill is an independent project developed by an individual. It is not affiliated
+        with any accounting firm, legal entity, or tax authority. The app is a productivity
+        tool — it does not provide legal, financial, or tax advice.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 Suman Kumar · OgreBill</p>
+    <p>
+      <a href="privacy-policy.html">Privacy Policy</a> ·
+      <a href="terms-of-service.html">Terms of Service</a> ·
+      <a href="app-info.html">App Info</a> ·
+      <a href="open-source-licenses.html">Open-Source Licenses</a>
+    </p>
+  </div>
+
+</body>
+</html>

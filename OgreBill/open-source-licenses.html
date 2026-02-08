@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OgreBill — Open-Source Licenses</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --muted: #555;
+      --accent: #4f46e5;
+      --accent-light: #eef2ff;
+      --border: #e5e7eb;
+      --radius: 12px;
+      --tag-bg: #f3f4f6;
+      --tag-text: #374151;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f14;
+        --card: #1a1a24;
+        --text: #e4e4ef;
+        --muted: #9ca3af;
+        --accent: #818cf8;
+        --accent-light: #1e1b4b;
+        --border: #2d2d3a;
+        --tag-bg: #2d2d3a;
+        --tag-text: #d1d5db;
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 0;
+    }
+    .hero {
+      background: linear-gradient(135deg, #059669, #10b981, #34d399);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1.5rem 2.5rem;
+    }
+    .hero h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; }
+    .hero .subtitle {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+    .hero .badge {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.3rem 0.9rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* Intro */
+    .intro {
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .intro p { font-size: 0.925rem; color: var(--text); margin-bottom: 0.5rem; }
+    .intro p:last-child { margin-bottom: 0; }
+
+    /* Package list */
+    .pkg-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: border-color 0.15s;
+    }
+    .pkg-card:hover { border-color: var(--accent); }
+    .pkg-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      width: 36px;
+      text-align: center;
+    }
+    .pkg-info { flex: 1; min-width: 0; }
+    .pkg-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .pkg-name a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .pkg-name a:hover { color: var(--accent); }
+    .pkg-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    .pkg-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+      align-items: center;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .tag-version {
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .tag-license {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+    .tag-bsd { background: #dbeafe; color: #1e40af; }
+    .tag-mit { background: #dcfce7; color: #166534; }
+    .tag-apache { background: #fef3c7; color: #92400e; }
+    @media (prefers-color-scheme: dark) {
+      .tag-bsd { background: #1e3a5f; color: #93c5fd; }
+      .tag-mit { background: #14532d; color: #86efac; }
+      .tag-apache { background: #451a03; color: #fcd34d; }
+    }
+
+    /* Section divider */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2rem 0 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .pkg-card { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .pkg-meta { margin-top: 0.25rem; }
+      .pkg-icon { display: none; }
+    }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 2rem; }
+      .container { padding: 2.5rem 2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>Open-Source Licenses</h1>
+    <p class="subtitle">OgreBill is built with the help of these amazing open-source packages</p>
+    <span class="badge">20 direct dependencies</span>
+  </div>
+
+  <div class="container">
+
+    <div class="intro">
+      <p>
+        OgreBill uses open-source packages licensed under permissive terms (BSD, MIT, Apache 2.0).
+        We are grateful to the open-source community for making these tools available.
+      </p>
+      <p>
+        You can also view licenses in-app via <strong>Settings → About → Open-Source Licenses</strong>.
+      </p>
+    </div>
+
+    <!-- ======================== -->
+    <div class="section-divider">Core Framework</div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">💙</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://flutter.dev" target="_blank" rel="noopener">Flutter</a></div>
+        <div class="pkg-desc">Google's UI toolkit for building natively compiled applications</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">3.35.7</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">🎯</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://dart.dev" target="_blank" rel="noopener">Dart SDK</a></div>
+        <div class="pkg-desc">Client-optimized language for fast apps on any platform</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">3.9.2</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <div class="section-divider">Database &amp; Storage</div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">🗄️</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/sqflite" target="_blank" rel="noopener">sqflite</a></div>
+        <div class="pkg-desc">SQLite plugin for Flutter — local database storage</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">2.4.2</span>
+        <span class="tag tag-bsd">BSD-2</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">📁</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/path_provider" target="_blank" rel="noopener">path_provider</a></div>
+        <div class="pkg-desc">Finding commonly used locations on the filesystem</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">2.1.5</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">📂</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/path" target="_blank" rel="noopener">path</a></div>
+        <div class="pkg-desc">Cross-platform file path manipulation</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">1.9.1</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">💾</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/shared_preferences" target="_blank" rel="noopener">shared_preferences</a></div>
+        <div class="pkg-desc">Persistent key-value storage for simple data</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">2.5.4</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">📑</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/file_picker" target="_blank" rel="noopener">file_picker</a></div>
+        <div class="pkg-desc">Native file explorer for picking files and directories</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">8.3.7</span>
+        <span class="tag tag-mit">MIT</span>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <div class="section-divider">Document Generation &amp; Export</div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">📄</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/pdf" target="_blank" rel="noopener">pdf</a></div>
+        <div class="pkg-desc">PDF document creation library</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">3.11.3</span>
+        <span class="tag tag-apache">Apache 2.0</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">🖨️</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/printing" target="_blank" rel="noopener">printing</a></div>
+        <div class="pkg-desc">PDF printing and sharing for Flutter</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">5.14.2</span>
+        <span class="tag tag-apache">Apache 2.0</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">📊</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/excel" target="_blank" rel="noopener">excel</a></div>
+        <div class="pkg-desc">Read and create Excel (XLSX) files in pure Dart</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">4.0.6</span>
+        <span class="tag tag-mit">MIT</span>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <div class="section-divider">UI &amp; Visualization</div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">📈</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/fl_chart" target="_blank" rel="noopener">fl_chart</a></div>
+        <div class="pkg-desc">Beautiful charts and graphs for Flutter</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">1.1.1</span>
+        <span class="tag tag-mit">MIT</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">🔳</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/qr_flutter" target="_blank" rel="noopener">qr_flutter</a></div>
+        <div class="pkg-desc">QR code rendering widget</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">4.1.0</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">🍎</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/cupertino_icons" target="_blank" rel="noopener">cupertino_icons</a></div>
+        <div class="pkg-desc">iOS-style icons for Flutter</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">1.0.8</span>
+        <span class="tag tag-mit">MIT</span>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <div class="section-divider">Sharing &amp; Communication</div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">📤</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/share_plus" target="_blank" rel="noopener">share_plus</a></div>
+        <div class="pkg-desc">Share content via the platform's share dialog</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">12.0.1</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">🔗</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/url_launcher" target="_blank" rel="noopener">url_launcher</a></div>
+        <div class="pkg-desc">Launch URLs in the mobile platform browser</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">6.3.2</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <div class="section-divider">Device &amp; Platform</div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">🔐</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/local_auth" target="_blank" rel="noopener">local_auth</a></div>
+        <div class="pkg-desc">Biometric authentication (Face ID, Fingerprint)</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">3.0.0</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">📷</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/image_picker" target="_blank" rel="noopener">image_picker</a></div>
+        <div class="pkg-desc">Pick images from gallery or camera</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">1.2.1</span>
+        <span class="tag tag-apache">Apache 2.0</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">🛡️</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/permission_handler" target="_blank" rel="noopener">permission_handler</a></div>
+        <div class="pkg-desc">Request and check permissions on Android and iOS</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">11.4.0</span>
+        <span class="tag tag-mit">MIT</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">📶</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/connectivity_plus" target="_blank" rel="noopener">connectivity_plus</a></div>
+        <div class="pkg-desc">Network connectivity detection</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">6.1.5</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">ℹ️</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/package_info_plus" target="_blank" rel="noopener">package_info_plus</a></div>
+        <div class="pkg-desc">Query app version, build number, and package name</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">8.3.1</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <div class="section-divider">Utilities</div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">🌍</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/intl" target="_blank" rel="noopener">intl</a></div>
+        <div class="pkg-desc">Internationalization, date/number formatting</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">0.20.2</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">🆔</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/uuid" target="_blank" rel="noopener">uuid</a></div>
+        <div class="pkg-desc">RFC4122 UUID generation</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">4.5.2</span>
+        <span class="tag tag-mit">MIT</span>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <div class="section-divider">In-App Purchases</div>
+
+    <div class="pkg-card">
+      <div class="pkg-icon">💳</div>
+      <div class="pkg-info">
+        <div class="pkg-name"><a href="https://pub.dev/packages/in_app_purchase" target="_blank" rel="noopener">in_app_purchase</a></div>
+        <div class="pkg-desc">A plugin for in-app purchases via App Store and Google Play</div>
+      </div>
+      <div class="pkg-meta">
+        <span class="tag tag-version">3.2.3</span>
+        <span class="tag tag-bsd">BSD-3</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>
+      All packages are used under their respective open-source licenses.<br>
+      Full license texts are available on each package's pub.dev page.
+    </p>
+    <p style="margin-top: 0.75rem;">
+      &copy; 2026 Suman Kumar · OgreBill
+    </p>
+    <p>
+      <a href="privacy-policy.html">Privacy Policy</a> ·
+      <a href="terms-of-service.html">Terms of Service</a> ·
+      <a href="impressum.html">Impressum</a> ·
+      <a href="app-info.html">App Info</a>
+    </p>
+  </div>
+
+</body>
+</html>
