@@ -311,7 +311,7 @@
       <p><strong>Step 2 — Backup Destination</strong></p>
       <p>Choose where your backups will be saved. Pick a folder on your device — ideally inside <strong>iCloud Drive</strong> for automatic cloud sync. If a previous backup is found, you can <strong>restore</strong> it right here.</p>
       <p><strong>Step 3 — Location</strong></p>
-      <p>Select your <strong>Country</strong> and <strong>Currency</strong>. OgreBill offers dedicated profiles for Hong Kong, United States, and New Zealand — with tax labels, currency formatting, and field configurations set automatically. A Generic International profile is always available.</p>
+      <p>Select your <strong>Country</strong> and <strong>Currency</strong>. OgreBill offers dedicated profiles for 10 countries — Hong Kong, United States, New Zealand, Australia, Canada, United Kingdom, Ireland, Netherlands, Sweden, and Switzerland — with tax labels, currency formatting, and field configurations set automatically. A Generic International profile is always available.</p>
       <p><strong>Step 4 — Business Information</strong></p>
       <p>Enter your business name, owner name, phone, email, and address. Optionally upload a <strong>business logo</strong> (from camera or photo library) — it will appear on all your PDF invoices.</p>
       <p><strong>Step 5 — Tax Configuration</strong></p>
@@ -367,7 +367,7 @@
     <!-- 3. INVOICES -->
     <div id="sec-invoices" class="category-header searchable" data-search="invoices list create edit detail status draft sent paid overdue cancelled">3. Invoices</div>
 
-    <div class="section searchable" data-search="invoices list search filter sort status tabs all draft sent paid overdue cancelled starred star badge chip">
+    <div class="section searchable" data-search="invoices list search filter sort status tabs all draft sent paid overdue cancelled badge chip">
       <div class="section-header">
         <span class="icon">&#x1F4CB;</span>
         <h2>Invoice List Screen</h2>
@@ -385,7 +385,6 @@
         <li><strong>Search</strong> — type client name, invoice number, or amount to filter instantly.</li>
         <li><strong>Status filter chips</strong> — tap a status to show only those invoices.</li>
         <li><strong>Sort</strong> — sort by date, amount, due date, status, or invoice number.</li>
-        <li><strong>Starred invoices</strong> — star important invoices to find them quickly.</li>
         <li><strong>Summary card</strong> — total invoiced, outstanding, and this month's stats.</li>
       </ul>
       <p>Tap the <strong>+ button</strong> (bottom right) to create a new invoice.</p>
@@ -411,7 +410,7 @@
       </div>
     </div>
 
-    <div class="section searchable" data-search="invoice detail view status change mark sent paid cancelled draft edit delete duplicate star share payment record audit log line items totals discount breakdown">
+    <div class="section searchable" data-search="invoice detail view status change mark sent paid cancelled draft edit delete share payment record audit log line items totals discount breakdown">
       <div class="section-header">
         <span class="icon">&#x1F50D;</span>
         <h2>Invoice Detail Screen</h2>
@@ -429,10 +428,8 @@
       </ul>
       <p><strong>Actions available:</strong></p>
       <ul>
-        <li><strong>Star / Unstar</strong> — mark as important</li>
         <li><strong>Share</strong> — opens the Share screen with PDF preview (see Section 4)</li>
         <li><strong>Edit</strong> — modify the invoice (only when Draft)</li>
-        <li><strong>Duplicate</strong> — create a copy as a new Draft — great for recurring work</li>
         <li><strong>Delete</strong> — remove the invoice (only Draft invoices — Sent/Paid/Cancelled cannot be deleted for audit integrity)</li>
       </ul>
       <p><strong>Status transitions:</strong></p>
@@ -652,11 +649,14 @@
         <span class="icon">&#x1F3F7;&#xFE0F;</span>
         <h2>Tax Configuration</h2>
       </div>
-      <p>Configure tax rates. Country profiles pre-fill common names and rates:</p>
+      <p>Configure tax rates. Country profiles pre-fill common names and rates. 10 dedicated profiles available including:</p>
       <ul>
         <li><strong>Hong Kong</strong> — no GST/VAT by default</li>
         <li><strong>United States</strong> — Sales Tax</li>
         <li><strong>New Zealand</strong> — GST (15%)</li>
+        <li><strong>Australia</strong> — GST (10%)</li>
+        <li><strong>United Kingdom</strong> — VAT (20%)</li>
+        <li>Plus Canada, Ireland, Netherlands, Sweden, Switzerland</li>
       </ul>
       <p>Add multiple tax rates, set a default, or configure custom rates.</p>
     </div>
@@ -890,14 +890,6 @@
       </div>
     </details>
 
-    <details class="searchable" data-search="multiple devices sync restore purchases Apple ID Google account transfer data move">
-      <summary><span>&#x1F4F1;</span> Can I use OgreBill on multiple devices?</summary>
-      <div class="answer">
-        <p>Your data does not sync automatically. Transfer data by creating a backup on one device and restoring it on another via iCloud Drive, AirDrop, or USB.</p>
-        <p>Restore your subscription on another device using the same Apple ID or Google account via <strong>"Restore Purchases"</strong> in Settings.</p>
-      </div>
-    </details>
-
     <details class="searchable" data-search="cancel subscription manage unsubscribe iOS Android stop payment">
       <summary><span>&#x1F6AB;</span> How do I cancel my subscription?</summary>
       <div class="answer">
@@ -926,21 +918,7 @@
     <details class="searchable" data-search="country countries supported Hong Kong United States New Zealand Australia Canada UK generic">
       <summary><span>&#x1F310;</span> Which countries does OgreBill support?</summary>
       <div class="answer">
-        <p>Dedicated profiles for <strong>Hong Kong, United States, and New Zealand</strong>. More planned: Australia, Canada, UK, Ireland, Netherlands, Sweden, Switzerland. A <strong>Generic International</strong> profile is always available.</p>
-      </div>
-    </details>
-
-    <details class="searchable" data-search="invoice number numbering prefix sequence auto number reset yearly sequential customise">
-      <summary><span>&#x1F522;</span> Can I customise invoice numbering?</summary>
-      <div class="answer">
-        <p>Yes. Configure prefix (e.g. "INV"), starting number, and yearly reset in Settings under Business Information.</p>
-      </div>
-    </details>
-
-    <details class="searchable" data-search="credit note refund cancel void reverse CN">
-      <summary><span>&#x1F4DD;</span> Does OgreBill support credit notes?</summary>
-      <div class="answer">
-        <p>Yes. Availability depends on your country profile. NZ, Australia, Canada, UK, Ireland, Netherlands, Sweden, and Switzerland profiles include credit note numbering.</p>
+        <p>Dedicated country profiles for <strong>Hong Kong, United States, New Zealand, Australia, Canada, United Kingdom, Ireland, Netherlands, Sweden, and Switzerland</strong> — each with localised tax labels, currency formatting, and invoice field configurations. A <strong>Generic International</strong> profile is always available for any other country.</p>
       </div>
     </details>
 
