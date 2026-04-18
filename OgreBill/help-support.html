@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OgreBill — Help &amp; Support</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --muted: #555;
+      --accent: #4f46e5;
+      --accent-light: #eef2ff;
+      --border: #e5e7eb;
+      --radius: 12px;
+      --warn: #ef4444;
+      --warn-light: #fef2f2;
+      --success: #059669;
+      --success-light: #ecfdf5;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f14;
+        --card: #1a1a24;
+        --text: #e4e4ef;
+        --muted: #9ca3af;
+        --accent: #818cf8;
+        --accent-light: #1e1b4b;
+        --border: #2d2d3a;
+        --warn: #f87171;
+        --warn-light: #2a1215;
+        --success: #34d399;
+        --success-light: #0d2a1f;
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 0;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1.5rem 2.5rem;
+    }
+    .hero h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; }
+    .hero .badge {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.3rem 0.9rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    .search-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg);
+      padding: 0.75rem 0 1rem;
+    }
+    .search-container { position: relative; }
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus { border-color: var(--accent); }
+    .search-input::placeholder { color: var(--muted); }
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: var(--muted);
+      pointer-events: none;
+    }
+    .no-results {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      display: none;
+    }
+    .summary-card {
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .summary-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .summary-card p { font-size: 0.95rem; color: var(--text); }
+    .summary-card strong { color: var(--accent); }
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .toc h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent); }
+    .toc ul { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 0.4rem; }
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.15s;
+    }
+    .toc a:hover { color: var(--accent); text-decoration: underline; }
+    .toc .toc-num {
+      display: inline-block;
+      width: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .category-header {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 2rem 0 0.75rem;
+      padding-left: 0.25rem;
+    }
+    .category-header:first-of-type { margin-top: 0; }
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .section-header .icon { font-size: 1.25rem; }
+    .section-header h2 { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+    .section p, .section li { font-size: 0.925rem; color: var(--muted); }
+    .section p { margin-bottom: 0.75rem; }
+    .section p:last-child { margin-bottom: 0; }
+    .section ol { padding-left: 1.4rem; margin-top: 0.5rem; }
+    .section ol li { margin-bottom: 0.5rem; }
+    .section ul { padding-left: 1.4rem; margin-top: 0.5rem; }
+    .section ul li { margin-bottom: 0.4rem; }
+    .tip {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 0.75rem 1rem;
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+    }
+    .tip strong { color: var(--accent); }
+    .tip-warn { background: var(--warn-light); border-left-color: var(--warn); }
+    .tip-warn strong { color: var(--warn); }
+    .tip-success { background: var(--success-light); border-left-color: var(--success); }
+    .tip-success strong { color: var(--success); }
+    details {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+    details summary {
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      list-style: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: '\25B8';
+      margin-left: auto;
+      transition: transform 0.2s;
+      color: var(--muted);
+    }
+    details[open] summary::after { transform: rotate(90deg); }
+    details .answer {
+      padding: 0 1.25rem 1.25rem;
+      font-size: 0.925rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .search-hidden { display: none !important; }
+    .search-clear {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      font-size: 1.1rem;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 0.25rem;
+      line-height: 1;
+      display: none;
+    }
+    .search-clear:hover { color: var(--text); }
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 2rem; }
+      .container { padding: 2.5rem 2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>Help &amp; Support</h1>
+    <span class="badge">OgreBill Complete User Guide</span>
+  </div>
+
+  <div class="container">
+
+    <div class="search-wrapper">
+      <div class="search-container">
+        <span class="search-icon">&#x1F50D;</span>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search help topics…" autocomplete="off" />
+        <button class="search-clear" id="searchClear" aria-label="Clear search">&#x2715;</button>
+      </div>
+    </div>
+
+    <div class="summary-card searchable" data-search="help support guide faq contact marketing professional invoicing">
+      <div class="icon">&#x1F4D6;</div>
+      <p>
+        Welcome to the <strong>OgreBill Complete User Guide</strong> — your go-to reference for everything in the app.
+      </p>
+      <p>
+        OgreBill is a <strong>professional invoicing app built for freelancers, solo entrepreneurs, and small businesses</strong> who want to look polished and stay organised without the complexity of enterprise software. Create beautiful branded PDF invoices in seconds, track expenses, monitor business health with real-time analytics, and share via email, WhatsApp, AirDrop, print, QR code, or local network — all from your pocket. No subscriptions required for core features, no internet needed, and your data never leaves your device.
+      </p>
+      <p style="margin-top:0.5rem;">
+        &#x1F6E1;&#xFE0F; <strong style="color:var(--warn);">Important — Your data exists only on this device.</strong>
+        OgreBill is 100% offline. Nothing is stored on any server or cloud. If your phone is lost, stolen, broken, or reset,
+        <strong>your invoices and records are gone forever</strong> unless you have a backup.
+        <strong>Please back up regularly</strong> to iCloud Drive, Google Drive, or another device.
+        &rarr; <a href="#sec-backup" style="color:var(--accent);font-weight:600;">Go to Backup &amp; Restore</a>
+      </p>
+    </div>
+
+    <div id="noResults" class="no-results">No matching topics found. Try a different search term.</div>
+
+    <div class="toc searchable" data-search="contents index navigation sections">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#sec-getting-started"><span class="toc-num">1.</span> Getting Started — First-Time Setup</a></li>
+        <li><a href="#sec-home"><span class="toc-num">2.</span> Home Dashboard &amp; Navigation</a></li>
+        <li><a href="#sec-invoices"><span class="toc-num">3.</span> Invoices — List, Create, Detail</a></li>
+        <li><a href="#sec-sharing"><span class="toc-num">4.</span> Sharing &amp; Exporting Invoices</a></li>
+        <li><a href="#sec-clients"><span class="toc-num">5.</span> Clients — List, Detail, Metrics</a></li>
+        <li><a href="#sec-services"><span class="toc-num">6.</span> Services — Reusable Line Items</a></li>
+        <li><a href="#sec-expenses"><span class="toc-num">7.</span> Expenses — Tracking Spending</a></li>
+        <li><a href="#sec-analytics"><span class="toc-num">8.</span> Analytics Dashboard</a></li>
+        <li><a href="#sec-settings"><span class="toc-num">9.</span> Settings — Full Reference</a></li>
+        <li><a href="#sec-backup"><span class="toc-num">10.</span> Backup &amp; Restore (Must Read!)</a></li>
+        <li><a href="#sec-faq"><span class="toc-num">11.</span> Frequently Asked Questions</a></li>
+        <li><a href="#sec-contact"><span class="toc-num">12.</span> Contact Support</a></li>
+      </ul>
+    </div>
+
+    <!-- 1. GETTING STARTED -->
+    <div id="sec-getting-started" class="category-header searchable" data-search="getting started setup first time wizard onboarding welcome">1. Getting Started — First-Time Setup</div>
+
+    <div class="section searchable" data-search="setup wizard welcome splash screen first launch onboarding 7 steps progress">
+      <div class="section-header">
+        <span class="icon">&#x2728;</span>
+        <h2>The Setup Wizard (7 Steps)</h2>
+      </div>
+      <p>When you open OgreBill for the first time, a step-by-step setup wizard guides you through configuring your business. Each step has a unique colour theme and a progress indicator at the top.</p>
+      <p><strong>Step 1 — Welcome</strong></p>
+      <p>A welcome screen introduces OgreBill's key features: professional invoicing, expense tracking, analytics, multi-sharing, and secure backups. Tap <strong>Get Started</strong> to begin.</p>
+      <p><strong>Step 2 — Backup Destination</strong></p>
+      <p>Choose where your backups will be saved. Pick a folder on your device — ideally inside <strong>iCloud Drive</strong> for automatic cloud sync. If a previous backup is found, you can <strong>restore</strong> it right here.</p>
+      <p><strong>Step 3 — Location</strong></p>
+      <p>Select your <strong>Country</strong> and <strong>Currency</strong>. OgreBill offers dedicated profiles for Hong Kong, United States, and New Zealand — with tax labels, currency formatting, and field configurations set automatically. A Generic International profile is always available.</p>
+      <p><strong>Step 4 — Business Information</strong></p>
+      <p>Enter your business name, owner name, phone, email, and address. Optionally upload a <strong>business logo</strong> (from camera or photo library) — it will appear on all your PDF invoices.</p>
+      <p><strong>Step 5 — Tax Configuration</strong></p>
+      <p>Configure your tax rates. Country profiles pre-fill tax names (e.g. GST for NZ, Sales Tax for US). You can add multiple tax rates and set a default. You can also enter your Tax ID / GST number here.</p>
+      <p><strong>Step 6 — Payment Methods</strong></p>
+      <p>Add your bank details, PayPal, UPI, or other payment methods. You can attach QR code images to payment profiles. These appear on your invoices so clients know how to pay you. <em>Optional — you can skip and configure later.</em></p>
+      <p><strong>Step 7 — Network Sharing</strong></p>
+      <p>Set up Wi-Fi network sharing for transferring invoice PDFs to nearby devices. Add trusted network names. <em>Optional — you can skip and configure later.</em></p>
+      <div class="tip">
+        <strong>Tip:</strong> You can always change any of these settings later from the Settings screen. The setup wizard simply gets you invoicing faster.
+      </div>
+    </div>
+
+    <div class="section searchable" data-search="setup complete demo data load sample try test celebration">
+      <div class="section-header">
+        <span class="icon">&#x1F389;</span>
+        <h2>Setup Complete — Ready to Invoice!</h2>
+      </div>
+      <p>After finishing setup you'll see a celebration screen. You can choose to <strong>Load Demo Data</strong> to explore the app with sample invoices, clients, and expenses, or jump straight in with a clean slate.</p>
+    </div>
+
+    <!-- 2. HOME DASHBOARD -->
+    <div id="sec-home" class="category-header searchable" data-search="home dashboard navigation tabs bottom bar summary">2. Home Dashboard &amp; Navigation</div>
+
+    <div class="section searchable" data-search="home screen bottom navigation tabs invoices clients services expenses analytics settings reorder rearrange">
+      <div class="section-header">
+        <span class="icon">&#x1F4F1;</span>
+        <h2>Bottom Navigation Bar</h2>
+      </div>
+      <p>The home screen has a bottom navigation bar with tabs for each major section:</p>
+      <ul>
+        <li><strong>Invoices</strong> — your invoice list</li>
+        <li><strong>Clients</strong> — customer management</li>
+        <li><strong>Services</strong> — reusable line items</li>
+        <li><strong>Expenses</strong> — expense tracking</li>
+        <li><strong>Analytics</strong> — business insights (premium)</li>
+        <li><strong>Settings</strong> — all configuration</li>
+      </ul>
+      <div class="tip">
+        <strong>Tip:</strong> Go to <strong>Settings &rarr; Navigation Menu Order</strong> to drag and rearrange the tabs in the order that suits your workflow.
+      </div>
+    </div>
+
+    <div class="section searchable" data-search="summary card this month invoices revenue outstanding stats quick glance collapse expand compact">
+      <div class="section-header">
+        <span class="icon">&#x1F4C8;</span>
+        <h2>Summary Cards</h2>
+      </div>
+      <p>At the top of the Invoices, Clients, and Expenses lists you'll see <strong>summary cards</strong> showing quick stats — this month's revenue, outstanding amounts, invoice counts, etc.</p>
+      <p>To keep them permanently collapsed, go to <strong>Settings &rarr; Collapse Summary Cards</strong>.</p>
+    </div>
+
+    <!-- 3. INVOICES -->
+    <div id="sec-invoices" class="category-header searchable" data-search="invoices list create edit detail status draft sent paid overdue cancelled">3. Invoices</div>
+
+    <div class="section searchable" data-search="invoices list search filter sort status tabs all draft sent paid overdue cancelled starred star badge chip">
+      <div class="section-header">
+        <span class="icon">&#x1F4CB;</span>
+        <h2>Invoice List Screen</h2>
+      </div>
+      <p>The invoice list shows all your invoices with colour-coded <strong>status badges</strong>:</p>
+      <ul>
+        <li><strong>Draft</strong> — grey, still editable</li>
+        <li><strong>Sent</strong> — blue, shared with client</li>
+        <li><strong>Paid</strong> — green, payment received</li>
+        <li><strong>Overdue</strong> — red, past due date</li>
+        <li><strong>Cancelled</strong> — muted, voided</li>
+      </ul>
+      <p><strong>Features on this screen:</strong></p>
+      <ul>
+        <li><strong>Search</strong> — type client name, invoice number, or amount to filter instantly.</li>
+        <li><strong>Status filter chips</strong> — tap a status to show only those invoices.</li>
+        <li><strong>Sort</strong> — sort by date, amount, due date, status, or invoice number.</li>
+        <li><strong>Starred invoices</strong> — star important invoices to find them quickly.</li>
+        <li><strong>Summary card</strong> — total invoiced, outstanding, and this month's stats.</li>
+      </ul>
+      <p>Tap the <strong>+ button</strong> (bottom right) to create a new invoice.</p>
+    </div>
+
+    <div class="section searchable" data-search="create invoice new invoice add invoice form line items client discount notes due date tax quantity unit price">
+      <div class="section-header">
+        <span class="icon">&#x270F;&#xFE0F;</span>
+        <h2>Creating / Editing an Invoice</h2>
+      </div>
+      <p>The invoice form lets you build a complete professional invoice:</p>
+      <ol>
+        <li><strong>Select a client</strong> — pick from your saved clients or add a new one on the spot.</li>
+        <li><strong>Add line items</strong> — for each item enter a description, quantity, unit price, and optional item-level discount (% or fixed). You can also pick from saved <strong>Services</strong> for instant fill.</li>
+        <li><strong>Invoice discount</strong> — optionally apply a discount to the full invoice (percentage or fixed amount).</li>
+        <li><strong>Due date</strong> — set when payment is expected.</li>
+        <li><strong>Notes</strong> — add any extra information or terms for the client.</li>
+        <li><strong>Review totals</strong> — subtotal, discounts, tax, and grand total are calculated automatically in real-time.</li>
+        <li>Tap <strong>Save</strong> — the invoice is saved as a Draft.</li>
+      </ol>
+      <div class="tip">
+        <strong>Tip:</strong> Save frequently used items in the Services tab. When adding line items you can search and select them with one tap — no retyping needed.
+      </div>
+    </div>
+
+    <div class="section searchable" data-search="invoice detail view status change mark sent paid cancelled draft edit delete duplicate star share payment record audit log line items totals discount breakdown">
+      <div class="section-header">
+        <span class="icon">&#x1F50D;</span>
+        <h2>Invoice Detail Screen</h2>
+      </div>
+      <p>Tap any invoice to see its full detail. This screen shows:</p>
+      <ul>
+        <li><strong>Status badge</strong> with colour and icon</li>
+        <li><strong>Client information</strong> — name, email, address</li>
+        <li><strong>Invoice number &amp; date</strong></li>
+        <li><strong>Due date</strong> — highlighted in red if overdue</li>
+        <li><strong>Line items table</strong> — description, quantity, unit price, item discount, line total</li>
+        <li><strong>Totals breakdown</strong>: Total before discounts, line item discounts, subtotal, invoice-level discount, tax, <strong>grand total</strong></li>
+        <li><strong>Notes</strong></li>
+        <li><strong>Audit log</strong> — a timeline of every action (created, edited, sent, paid, etc.)</li>
+      </ul>
+      <p><strong>Actions available:</strong></p>
+      <ul>
+        <li><strong>Star / Unstar</strong> — mark as important</li>
+        <li><strong>Share</strong> — opens the Share screen with PDF preview (see Section 4)</li>
+        <li><strong>Edit</strong> — modify the invoice (only when Draft)</li>
+        <li><strong>Duplicate</strong> — create a copy as a new Draft — great for recurring work</li>
+        <li><strong>Delete</strong> — remove the invoice (only Draft invoices — Sent/Paid/Cancelled cannot be deleted for audit integrity)</li>
+      </ul>
+      <p><strong>Status transitions:</strong></p>
+      <ul>
+        <li><strong>Draft &rarr; Sent</strong> — mark as sent after sharing</li>
+        <li><strong>Sent &rarr; Paid</strong> — record payment received</li>
+        <li><strong>Draft / Sent &rarr; Cancelled</strong> — cancel the invoice</li>
+      </ul>
+      <div class="tip">
+        <strong>Tip:</strong> The audit log at the bottom is a complete history of every change — valuable for bookkeeping and dispute resolution.
+      </div>
+    </div>
+
+    <!-- 4. SHARING -->
+    <div id="sec-sharing" class="category-header searchable" data-search="share export PDF email WhatsApp print AirDrop QR code network template">4. Sharing &amp; Exporting Invoices</div>
+
+    <div class="section searchable" data-search="share screen invoice PDF preview template colour theme Ocean Blue Graphite Emerald Coral Violet picker business logo">
+      <div class="section-header">
+        <span class="icon">&#x1F3A8;</span>
+        <h2>The Share Screen</h2>
+      </div>
+      <p>From any invoice detail, tap <strong>Share</strong> to open the Share screen. Here you see:</p>
+      <ul>
+        <li>A <strong>live PDF preview</strong> of your invoice in the selected template theme.</li>
+        <li>A <strong>template picker</strong> — switch between 5 colour themes: <strong>Ocean Blue</strong> (default), <strong>Graphite</strong>, <strong>Emerald</strong>, <strong>Coral</strong>, <strong>Violet</strong>.</li>
+        <li>Your <strong>business name, logo, and contact details</strong> in the PDF header.</li>
+        <li>Your <strong>payment method details</strong> (bank, PayPal, UPI, QR code) in the PDF footer.</li>
+      </ul>
+      <p>Below the preview are the sharing action buttons.</p>
+    </div>
+
+    <div class="section searchable" data-search="share options methods email WhatsApp device AirDrop print QR code local network WiFi all sharing methods send invoice PDF">
+      <div class="section-header">
+        <span class="icon">&#x1F4E8;</span>
+        <h2>All Sharing Methods</h2>
+      </div>
+      <ol>
+        <li><strong>Share via Email</strong> — Sends the PDF as an email attachment using your customisable email template. Recipient email is pre-filled from client data. <em>(Premium feature)</em></li>
+        <li><strong>Share via WhatsApp</strong> — Sends the invoice PDF directly to your client's WhatsApp.</li>
+        <li><strong>Share via Device (Share Sheet)</strong> — Opens your device's native share sheet: AirDrop, Messages, Telegram, Signal, Files, clipboard, etc.</li>
+        <li><strong>Print</strong> — Print the invoice PDF directly to any AirPrint-compatible printer.</li>
+        <li><strong>QR Code</strong> — Generate a QR code that links to the invoice.</li>
+        <li><strong>Local Network Sharing</strong> — Share over Wi-Fi to nearby devices. The receiver scans a QR code to connect and download the PDF. Configure in <strong>Settings &rarr; Network Sharing</strong>.</li>
+      </ol>
+      <div class="tip">
+        <strong>Tip:</strong> A copy of the PDF is also saved automatically to your device's Documents folder with the naming format: <code>invoice_YYYY-MM-DD_INV-XXX_ClientName.pdf</code>
+      </div>
+    </div>
+
+    <!-- 5. CLIENTS -->
+    <div id="sec-clients" class="category-header searchable" data-search="clients customers list add edit detail metrics invoices revenue outstanding">5. Clients</div>
+
+    <div class="section searchable" data-search="clients list search sort add new client customer alphabetical revenue invoices quick stats card">
+      <div class="section-header">
+        <span class="icon">&#x1F4C7;</span>
+        <h2>Client List Screen</h2>
+      </div>
+      <p>The Clients tab shows all your customers. Features:</p>
+      <ul>
+        <li><strong>Search</strong> — find clients by name, email, or company.</li>
+        <li><strong>Sort</strong> — alphabetical, by most invoices, or by revenue.</li>
+        <li><strong>Quick stats</strong> — each client card shows total invoices and outstanding amount.</li>
+      </ul>
+      <p>Tap <strong>+</strong> to add a new client with their name, email, phone, and address.</p>
+    </div>
+
+    <div class="section searchable" data-search="client detail individual metrics revenue outstanding invoices total tax expenses contact information edit delete related invoices sort filter date range week month year custom">
+      <div class="section-header">
+        <span class="icon">&#x1F464;</span>
+        <h2>Client Detail Screen</h2>
+      </div>
+      <p>Tap any client to see their <strong>full profile and business metrics</strong>.</p>
+      <p><strong>Contact Information:</strong> Name, email, phone, and address — with quick-action buttons to call or email.</p>
+      <p><strong>Client Metrics Cards:</strong></p>
+      <ul>
+        <li><strong>Total Revenue</strong> — total billed across all invoices</li>
+        <li><strong>Outstanding Amount</strong> — total unpaid</li>
+        <li><strong>Invoice Count</strong> — number of invoices for this client</li>
+        <li><strong>Total Tax Collected</strong> — sum of tax from their invoices</li>
+        <li><strong>Total Expenses</strong> — expenses linked to this client</li>
+      </ul>
+      <p><strong>Related Invoices:</strong> A full list of every invoice for this client. You can:</p>
+      <ul>
+        <li><strong>Filter by date range</strong> — presets: All, This Week, This Month, This Year, or Custom date range.</li>
+        <li><strong>Sort</strong> — by date, amount, due date, status, or invoice number.</li>
+        <li><strong>Tap any invoice</strong> to jump to its detail screen.</li>
+      </ul>
+      <p><strong>Actions:</strong></p>
+      <ul>
+        <li><strong>Edit</strong> — update client details</li>
+        <li><strong>Create Invoice</strong> — start a new invoice pre-filled with this client</li>
+        <li><strong>Delete</strong> — remove the client (only if no invoices are linked)</li>
+      </ul>
+      <div class="tip">
+        <strong>Tip:</strong> The client detail screen is the best place to understand your relationship with a specific client — total revenue, what's owed, and their full invoice history, all on one page.
+      </div>
+    </div>
+
+    <!-- 6. SERVICES -->
+    <div id="sec-services" class="category-header searchable" data-search="services items reusable line items unit price tax rate description">6. Services — Reusable Line Items</div>
+
+    <div class="section searchable" data-search="services list add edit delete reusable line item price description tax rate quantity saved detail usage stats how many invoices">
+      <div class="section-header">
+        <span class="icon">&#x1F4E6;</span>
+        <h2>Services List &amp; Detail</h2>
+      </div>
+      <p>Services are reusable line items that you can add to invoices with one tap. Each service stores:</p>
+      <ul>
+        <li><strong>Name / Description</strong></li>
+        <li><strong>Unit Price</strong></li>
+        <li><strong>Tax Rate</strong> (optional)</li>
+        <li><strong>Default Quantity</strong> (optional)</li>
+      </ul>
+      <p><strong>Creating a Service:</strong></p>
+      <ol>
+        <li>Go to the <strong>Services</strong> tab and tap <strong>+</strong>.</li>
+        <li>Fill in the name, price, and optional tax rate.</li>
+        <li>Tap <strong>Save</strong>.</li>
+      </ol>
+      <p><strong>Using Services in Invoices:</strong></p>
+      <ol>
+        <li>When creating or editing an invoice, tap <strong>"Add from Services"</strong>.</li>
+        <li>Search or browse your saved services.</li>
+        <li>Tap to select — the line item is filled automatically.</li>
+        <li>Adjust quantity or price if needed for this particular invoice.</li>
+      </ol>
+      <p><strong>Service Detail Screen:</strong> Tap any service to view usage stats (how many invoices reference it), and edit or delete it.</p>
+      <div class="tip">
+        <strong>Tip:</strong> If you sell the same products or services repeatedly, creating them here will dramatically speed up invoice creation.
+      </div>
+    </div>
+
+    <!-- 7. EXPENSES -->
+    <div id="sec-expenses" class="category-header searchable" data-search="expenses tracking spending category amount date receipt">7. Expenses</div>
+
+    <div class="section searchable" data-search="expenses list add track spending category amount date log search sort filter receipt office supplies travel software">
+      <div class="section-header">
+        <span class="icon">&#x1F9FE;</span>
+        <h2>Expense List Screen</h2>
+      </div>
+      <p>The Expenses tab lets you log and track all your business expenses:</p>
+      <ul>
+        <li><strong>Search</strong> — find expenses by description or category.</li>
+        <li><strong>Sort</strong> — by date, amount, or category.</li>
+        <li><strong>Summary card</strong> — total expenses at a glance.</li>
+      </ul>
+      <p>Tap <strong>+</strong> to log a new expense.</p>
+    </div>
+
+    <div class="section searchable" data-search="add expense create new expense amount category date description client linked edit delete detail">
+      <div class="section-header">
+        <span class="icon">&#x2795;</span>
+        <h2>Adding &amp; Viewing Expenses</h2>
+      </div>
+      <p><strong>Adding an Expense:</strong></p>
+      <ol>
+        <li>Tap <strong>+</strong> on the Expenses tab.</li>
+        <li>Enter the <strong>amount</strong>.</li>
+        <li>Choose a <strong>category</strong> (e.g. Office Supplies, Travel, Software, Marketing, Utilities).</li>
+        <li>Set the <strong>date</strong>.</li>
+        <li>Add a <strong>description</strong>.</li>
+        <li>Optionally link it to a <strong>client</strong> — linked expenses appear in that client's detail metrics.</li>
+        <li>Tap <strong>Save</strong>.</li>
+      </ol>
+      <p>Expense data feeds into the Analytics dashboard for category breakdowns and trend analysis.</p>
+    </div>
+
+    <!-- 8. ANALYTICS -->
+    <div id="sec-analytics" class="category-header searchable" data-search="analytics dashboard charts revenue trends payment health client performance premium">8. Analytics Dashboard</div>
+
+    <div class="section searchable" data-search="analytics this month summary revenue invoices sent payments received overview quick stats monthly chart trends YTD tax payment health outstanding overdue collection rate average days service profitability expense breakdown category client performance ranking premium">
+      <div class="section-header">
+        <span class="icon">&#x1F4CA;</span>
+        <h2>Analytics Overview (Premium)</h2>
+      </div>
+      <p>The Analytics dashboard gives you a comprehensive view of your business performance:</p>
+      <ul>
+        <li><strong>This Month Summary</strong> — total revenue, invoices sent, payments received, expenses.</li>
+        <li><strong>Monthly Revenue Chart</strong> — visual chart showing revenue trends month by month.</li>
+        <li><strong>Payment Health</strong> — collection rate, average days to pay, outstanding and overdue amounts.</li>
+        <li><strong>Client Performance</strong> — ranks your clients by total revenue and contribution.</li>
+        <li><strong>Service Profitability</strong> — which services generate the most revenue.</li>
+        <li><strong>Expense Breakdown</strong> — expenses broken down by category.</li>
+        <li><strong>Year-to-Date Tax Summary</strong> — total tax collected for the current year, useful for tax filing.</li>
+      </ul>
+      <div class="tip">
+        <strong>Note:</strong> The Analytics dashboard is a premium feature available with OgreBill Professional.
+      </div>
+    </div>
+
+    <!-- 9. SETTINGS -->
+    <div id="sec-settings" class="category-header searchable" data-search="settings configuration business tax payment email network app preferences">9. Settings — Full Reference</div>
+
+    <div class="section searchable" data-search="settings overview sections business app data summary subscription manage plan upgrade">
+      <div class="section-header">
+        <span class="icon">&#x2699;&#xFE0F;</span>
+        <h2>Settings Overview</h2>
+      </div>
+      <p>The Settings screen is organised into clear sections. At the top:</p>
+      <ul>
+        <li><strong>Summary card</strong> — your business name, country, and key stats.</li>
+        <li><strong>Subscription card</strong> — current plan status, trial days remaining, and upgrade button.</li>
+      </ul>
+      <p>Below are two main groups: <strong>BUSINESS</strong> and <strong>APP</strong> settings, followed by <strong>DATA &amp; DOCS</strong>.</p>
+    </div>
+
+    <div class="section searchable" data-search="business information name owner phone email address logo tax ID GST number upload photo camera image">
+      <div class="section-header">
+        <span class="icon">&#x1F3E2;</span>
+        <h2>Business Information</h2>
+      </div>
+      <p>Edit your business name, owner name, phone, email, address, and Tax ID / GST number. Upload or change your <strong>business logo</strong> — it appears on every PDF invoice header.</p>
+    </div>
+
+    <div class="section searchable" data-search="tax configuration country profile GST VAT sales tax rate default multiple taxes">
+      <div class="section-header">
+        <span class="icon">&#x1F3F7;&#xFE0F;</span>
+        <h2>Tax Configuration</h2>
+      </div>
+      <p>Configure tax rates. Country profiles pre-fill common names and rates:</p>
+      <ul>
+        <li><strong>Hong Kong</strong> — no GST/VAT by default</li>
+        <li><strong>United States</strong> — Sales Tax</li>
+        <li><strong>New Zealand</strong> — GST (15%)</li>
+      </ul>
+      <p>Add multiple tax rates, set a default, or configure custom rates.</p>
+    </div>
+
+    <div class="section searchable" data-search="payment methods bank transfer PayPal UPI QR code payment profile add remove edit details">
+      <div class="section-header">
+        <span class="icon">&#x1F4B3;</span>
+        <h2>Payment Methods</h2>
+      </div>
+      <p>Add your bank details, PayPal, UPI, or other payment methods. Attach QR code images. Configured methods appear on your invoices so clients know how to pay you.</p>
+    </div>
+
+    <div class="section searchable" data-search="email template customise customize signature message placeholder client_name invoice_number business_name body subject">
+      <div class="section-header">
+        <span class="icon">&#x2709;&#xFE0F;</span>
+        <h2>Email Template</h2>
+      </div>
+      <p>Customise the email subject, message body, and signature sent when sharing via email.</p>
+      <p><strong>Placeholders:</strong> <code>{client_name}</code>, <code>{invoice_number}</code>, <code>{invoice_date}</code>, <code>{invoice_total}</code>, <code>{business_name}</code>, <code>{owner_name}</code>, <code>{phone}</code>, <code>{email}</code>, <code>{address}</code>, <code>{signature}</code></p>
+      <p>Placeholders are filled automatically with real data. <em>(Premium feature)</em></p>
+    </div>
+
+    <div class="section searchable" data-search="network sharing WiFi local share configure trusted networks QR code hotspot nearby devices">
+      <div class="section-header">
+        <span class="icon">&#x1F4E1;</span>
+        <h2>Network Sharing</h2>
+      </div>
+      <p>Configure Wi-Fi networks for local invoice sharing. Add your SSID and password. Receivers scan a QR code to join and download the PDF.</p>
+    </div>
+
+    <div class="section searchable" data-search="language dark mode app lock biometric collapse summary navigation menu order template default preferences">
+      <div class="section-header">
+        <span class="icon">&#x1F527;</span>
+        <h2>App Preferences</h2>
+      </div>
+      <ul>
+        <li><strong>Language</strong> — English and German (Deutsch). Follows device language automatically.</li>
+        <li><strong>Dark Mode</strong> — toggle dark/light theme. All screens fully styled for each.</li>
+        <li><strong>App Lock</strong> — require Face ID or fingerprint to open OgreBill. Biometric data stays on device.</li>
+        <li><strong>Collapse Summary Cards</strong> — keep summary cards compact by default.</li>
+        <li><strong>Default Invoice Template</strong> — choose from 5 themes: Ocean Blue, Graphite, Emerald, Coral, Violet. Override per invoice on the Share screen.</li>
+        <li><strong>Navigation Menu Order</strong> — drag and reorder the bottom navigation tabs.</li>
+      </ul>
+    </div>
+
+    <div class="section searchable" data-search="data safety backup restore export about help support information licenses privacy terms docs">
+      <div class="section-header">
+        <span class="icon">&#x1F6E1;&#xFE0F;</span>
+        <h2>Data &amp; Docs</h2>
+      </div>
+      <p>At the bottom of Settings:</p>
+      <ul>
+        <li><strong>Data Safety</strong> — backup, restore, export (see Section 10)</li>
+        <li><strong>Help &amp; Support</strong> — this user guide</li>
+        <li><strong>About</strong> — app version, privacy policy, terms of service, impressum, open-source licences</li>
+      </ul>
+    </div>
+
+    <!-- 10. BACKUP & RESTORE -->
+    <div id="sec-backup" class="category-header searchable" data-search="backup restore data safety important critical must read">10. Backup &amp; Restore (Must Read!)</div>
+
+    <div class="section searchable" data-search="backup important why data loss risk phone lost stolen broken crash reset factory critical warning">
+      <div class="section-header">
+        <span class="icon">&#x1F6A8;</span>
+        <h2>Why Backup Is Critical</h2>
+      </div>
+      <p style="font-size:1rem;color:var(--text);font-weight:600;">Your invoices, clients, and financial records exist <em>only</em> on your device. OgreBill is offline-first — nothing is stored on a server.</p>
+      <p>Without a backup you could lose <strong>everything</strong> if your phone is lost, stolen, broken, factory-reset, or if the app is accidentally deleted.</p>
+      <div class="tip tip-warn">
+        <strong>Real risk:</strong> Even a routine iOS or Android update can sometimes cause data loss. A 30-second backup today can save months of work. <strong>Back up now — and back up often.</strong>
+      </div>
+    </div>
+
+    <div class="section searchable" data-search="backup manual create local backup now step by step how to save folder destination choose directory iCloud Drive">
+      <div class="section-header">
+        <span class="icon">&#x1F4C1;</span>
+        <h2>Method 1 — Manual Backup (Recommended)</h2>
+      </div>
+      <p>Create a backup file on demand and store it wherever you like.</p>
+      <ol>
+        <li>Open <strong>Settings &rarr; Data Safety</strong>.</li>
+        <li>Tap <strong>"Set Backup Destination"</strong> and choose a folder. For cloud protection pick a folder inside <strong>iCloud Drive</strong>, <strong>Google Drive</strong>, or <strong>Dropbox</strong>.</li>
+        <li>Tap <strong>"Create Local Backup Now"</strong>.</li>
+        <li>A timestamped <code>.db</code> file (e.g. <code>backup_20260418T143022.db</code>) is saved to your chosen folder.</li>
+        <li>You will see a confirmation with the file name and size.</li>
+      </ol>
+      <div class="tip">
+        <strong>Tip:</strong> Store backups in a cloud-synced folder so they survive even if your device is lost. iCloud Drive is the easiest option on iPhone.
+      </div>
+      <div class="tip tip-success">
+        <strong>Where to find backups on your iPhone:</strong> All database backup files are also accessible in the <strong>Files app &rarr; On My iPhone &rarr; OgreBill</strong> folder. You can browse, copy, AirDrop, or move them from there at any time.
+      </div>
+    </div>
+
+    <div class="section searchable" data-search="auto backup automatic scheduled daily weekly monthly frequency incremental premium files app where saved location iCloud sync">
+      <div class="section-header">
+        <span class="icon">&#x23F0;</span>
+        <h2>Method 2 — Automatic Backup</h2>
+      </div>
+      <p>Let the app back up on a schedule so you never forget.</p>
+      <ol>
+        <li>Go to <strong>Settings &rarr; Data Safety</strong>.</li>
+        <li>Make sure a backup destination folder is set.</li>
+        <li>Toggle <strong>"Auto Backup"</strong> on.</li>
+        <li>Choose a frequency: <strong>Daily</strong> (recommended), <strong>Weekly</strong>, or <strong>Monthly</strong>.</li>
+        <li>Optionally enable <strong>"Incremental Backup"</strong> — saves only changes since the last backup.</li>
+      </ol>
+      <p>Auto backups run silently. Check the last backup date on the Data Safety screen.</p>
+      <div class="tip">
+        <strong>Where are auto backup files saved?</strong> They are regular <code>.db</code> files saved in the destination folder you chose — the same place as manual backups. On iPhone, open the <strong>Files</strong> app and navigate to your backup folder to see them. They are also always accessible in <strong>Files &rarr; On My iPhone &rarr; OgreBill</strong>. If your destination is inside <strong>iCloud Drive</strong>, the files sync automatically and are accessible on your Mac in <strong>Finder &rarr; iCloud Drive</strong>.
+      </div>
+      <div class="tip">
+        <strong>Note:</strong> Auto Backup is a premium feature available with OgreBill Professional.
+      </div>
+    </div>
+
+    <div class="section searchable" data-search="import backup file picker browse files external device AirDrop email attachment download .db restore from file">
+      <div class="section-header">
+        <span class="icon">&#x1F4C2;</span>
+        <h2>Method 3 — Import a Backup File</h2>
+      </div>
+      <p>Restore from a backup file that lives anywhere on your device, or received via AirDrop, email, or messaging.</p>
+      <ol>
+        <li>Go to <strong>Settings &rarr; Data Safety</strong>.</li>
+        <li>Tap <strong>"Import Backup from File"</strong>.</li>
+        <li>Browse to the <code>.db</code> file and select it.</li>
+        <li>The app validates the file, then asks you to confirm.</li>
+        <li>Your current data is replaced and the app restarts.</li>
+      </ol>
+      <div class="tip">
+        <strong>Tip:</strong> On iPhone, if someone AirDrops you a backup file it lands in <strong>Files &rarr; Downloads</strong>. Use "Import Backup from File" to pick it up.
+      </div>
+    </div>
+
+    <div class="section searchable" data-search="restore backup list previous select choose roll back undo data safety available backups newest first">
+      <div class="section-header">
+        <span class="icon">&#x1F504;</span>
+        <h2>Method 4 — Restore from Backup List</h2>
+      </div>
+      <p>Browse all backups saved to your destination folder and restore any one.</p>
+      <ol>
+        <li>Go to <strong>Settings &rarr; Data Safety</strong>.</li>
+        <li>Scroll to <strong>"Available Backups"</strong> — sorted newest first.</li>
+        <li>Tap the backup you want to restore.</li>
+        <li>Confirm. Your current data will be replaced.</li>
+        <li>The app restarts with the restored data.</li>
+      </ol>
+      <div class="tip tip-warn">
+        <strong>Important:</strong> Always create a fresh backup <em>before</em> restoring an older one — so you can go back if needed.
+      </div>
+    </div>
+
+    <div class="section searchable" data-search="copy backup MacBook Mac computer Finder iCloud Drive AirDrop USB cable transfer iPhone to Mac Files app access folder desktop laptop">
+      <div class="section-header">
+        <span class="icon">&#x1F4BB;</span>
+        <h2>Copying Backups to Your Mac or Computer</h2>
+      </div>
+      <p>Every OgreBill backup is a standard <code>.db</code> file visible in the <strong>Files</strong> app on your iPhone.</p>
+      <p><strong>Option A — iCloud Drive (easiest, automatic):</strong></p>
+      <ol>
+        <li>Set your backup destination to a folder inside <strong>iCloud Drive</strong>.</li>
+        <li>All backups sync to iCloud automatically.</li>
+        <li>On your Mac: <strong>Finder &rarr; iCloud Drive</strong> — same folder, same files.</li>
+      </ol>
+      <p><strong>Option B — AirDrop:</strong></p>
+      <ol>
+        <li>Open <strong>Files</strong> app &rarr; navigate to your backup folder.</li>
+        <li>Long-press a <code>.db</code> file &rarr; <strong>Share &rarr; AirDrop</strong> &rarr; select your Mac.</li>
+      </ol>
+      <p><strong>Option C — USB cable (Finder):</strong></p>
+      <ol>
+        <li>Connect iPhone to Mac with USB.</li>
+        <li><strong>Finder</strong> &rarr; select iPhone &rarr; <strong>Files</strong> tab.</li>
+        <li>Expand <strong>OgreBill</strong> &rarr; drag backup files to your Mac.</li>
+      </ol>
+      <div class="tip">
+        <strong>Tip:</strong> Keep at least one backup on your Mac or external drive as a last line of defence.
+      </div>
+    </div>
+
+    <div class="section searchable" data-search="export all data Excel workbook CSV spreadsheet invoices clients services expenses download xlsx human readable">
+      <div class="section-header">
+        <span class="icon">&#x1F4CA;</span>
+        <h2>Export All Data as Excel</h2>
+      </div>
+      <p>Export a human-readable Excel workbook with all your data:</p>
+      <ol>
+        <li>Go to <strong>Settings &rarr; Data Safety &rarr; Export All Data</strong>.</li>
+        <li>An <code>.xlsx</code> workbook is generated with sheets for Invoices, Clients, Services, Expenses.</li>
+        <li>Save or share the file via the share sheet.</li>
+      </ol>
+      <div class="tip tip-success">
+        <strong>Files &rarr; OgreBill folder:</strong> Exported Excel files and all database backups are also saved in the <strong>Files app &rarr; On My iPhone &rarr; OgreBill</strong> folder, so you can always find them even without opening the app.
+      </div>
+      <div class="tip">
+        <strong>Note:</strong> CSV / Excel export is a premium feature available with OgreBill Professional.
+      </div>
+    </div>
+
+    <div class="section searchable" data-search="backup best practices tips cloud synced folder multiple copies regular schedule advice checklist">
+      <div class="section-header">
+        <span class="icon">&#x2705;</span>
+        <h2>Backup Best Practices</h2>
+      </div>
+      <ol>
+        <li><strong>Back up at least once a week</strong> — daily if you invoice frequently.</li>
+        <li><strong>Use a cloud-synced folder</strong> (iCloud Drive, Google Drive, OneDrive).</li>
+        <li><strong>Keep multiple backups</strong> — don't delete old ones too soon.</li>
+        <li><strong>Test a restore occasionally</strong> — verify your backups actually work.</li>
+        <li><strong>Export to Excel periodically</strong> — a spreadsheet is a readable safety net.</li>
+        <li><strong>Enable Auto Backup</strong> so you're protected even when you forget.</li>
+        <li><strong>Copy at least one backup to your Mac</strong>.</li>
+      </ol>
+    </div>
+
+    <!-- 11. FAQ -->
+    <div id="sec-faq" class="category-header searchable" data-search="frequently asked questions FAQ">11. Frequently Asked Questions</div>
+
+    <details class="searchable" data-search="data stored online cloud offline privacy local device server upload">
+      <summary><span>&#x2601;&#xFE0F;</span> Is my data stored online?</summary>
+      <div class="answer">
+        <p>No. OgreBill is completely offline-first. All your data stays on your device. Nothing is uploaded to any server. Data only leaves your device when you choose to export, share, or print.</p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="trial ends free features premium subscription expire what happens">
+      <summary><span>&#x23F3;</span> What happens when the trial ends?</summary>
+      <div class="answer">
+        <p>Basic invoicing features remain <strong>free forever</strong>. You can still create, view, and share invoices, manage clients and services, track expenses, and back up your data.</p>
+        <p>Premium features requiring OgreBill Professional: Analytics dashboard, Email sharing, CSV/Excel export, Auto Backup, Advanced tax configuration, Payment tracking.</p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="multiple devices sync restore purchases Apple ID Google account transfer data move">
+      <summary><span>&#x1F4F1;</span> Can I use OgreBill on multiple devices?</summary>
+      <div class="answer">
+        <p>Your data does not sync automatically. Transfer data by creating a backup on one device and restoring it on another via iCloud Drive, AirDrop, or USB.</p>
+        <p>Restore your subscription on another device using the same Apple ID or Google account via <strong>"Restore Purchases"</strong> in Settings.</p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="cancel subscription manage unsubscribe iOS Android stop payment">
+      <summary><span>&#x1F6AB;</span> How do I cancel my subscription?</summary>
+      <div class="answer">
+        <p><strong>iOS:</strong> Settings app &rarr; tap your name &rarr; Subscriptions &rarr; OgreBill &rarr; Cancel.</p>
+        <p><strong>Android:</strong> Google Play Store &rarr; Menu &rarr; Subscriptions &rarr; OgreBill &rarr; Cancel.</p>
+        <p>Or tap <strong>"Manage Subscription"</strong> in OgreBill's Settings.</p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="restore backup data safety import recover how to two ways">
+      <summary><span>&#x1F504;</span> How do I restore a backup?</summary>
+      <div class="answer">
+        <p><strong>Option A — From backup list:</strong> Settings &rarr; Data Safety &rarr; scroll to "Available Backups" &rarr; tap one.</p>
+        <p><strong>Option B — Import a file:</strong> Tap "Import Backup from File" &rarr; browse to any <code>.db</code> file.</p>
+        <p>Both validate, replace your data, and restart the app. <strong>Always create a fresh backup before restoring.</strong></p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="export data Excel workbook CSV all data download how to">
+      <summary><span>&#x1F4E5;</span> How do I export all my data?</summary>
+      <div class="answer">
+        <p><strong>Settings &rarr; Data Safety &rarr; Export All Data</strong>. Creates an Excel workbook with all invoices, clients, services, and expenses. Individual invoices can also be exported as PDF from the Share screen.</p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="country countries supported Hong Kong United States New Zealand Australia Canada UK generic">
+      <summary><span>&#x1F310;</span> Which countries does OgreBill support?</summary>
+      <div class="answer">
+        <p>Dedicated profiles for <strong>Hong Kong, United States, and New Zealand</strong>. More planned: Australia, Canada, UK, Ireland, Netherlands, Sweden, Switzerland. A <strong>Generic International</strong> profile is always available.</p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="invoice number numbering prefix sequence auto number reset yearly sequential customise">
+      <summary><span>&#x1F522;</span> Can I customise invoice numbering?</summary>
+      <div class="answer">
+        <p>Yes. Configure prefix (e.g. "INV"), starting number, and yearly reset in Settings under Business Information.</p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="credit note refund cancel void reverse CN">
+      <summary><span>&#x1F4DD;</span> Does OgreBill support credit notes?</summary>
+      <div class="answer">
+        <p>Yes. Availability depends on your country profile. NZ, Australia, Canada, UK, Ireland, Netherlands, Sweden, and Switzerland profiles include credit note numbering.</p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="delete invoice cannot delete sent paid why audit integrity">
+      <summary><span>&#x1F510;</span> Why can't I delete a sent or paid invoice?</summary>
+      <div class="answer">
+        <p>For <strong>audit integrity</strong>, Sent, Paid, and Cancelled invoices cannot be deleted. To void a sent invoice, change its status to <strong>Cancelled</strong> instead.</p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="subscription plan price pricing monthly yearly professional plans available">
+      <summary><span>&#x1F48E;</span> What subscription plans are available?</summary>
+      <div class="answer">
+        <p>OgreBill Professional: <strong>Monthly</strong> (pay as you go) and <strong>Yearly</strong> (best value). Both unlock all premium features. Managed via App Store or Google Play.</p>
+      </div>
+    </details>
+
+    <details class="searchable" data-search="app lock biometric Face ID fingerprint security how to enable">
+      <summary><span>&#x1F512;</span> How do I lock the app?</summary>
+      <div class="answer">
+        <p><strong>Settings &rarr; App Lock</strong> — toggle on. Uses Face ID or fingerprint. Biometric data stays on your device and is never accessed by OgreBill.</p>
+      </div>
+    </details>
+
+    <!-- 12. CONTACT -->
+    <div id="sec-contact" class="category-header searchable" data-search="contact support email help feedback bug report">12. Contact Support</div>
+
+    <div class="section searchable" data-search="contact support email help feedback bug report issue need help">
+      <div class="section-header">
+        <span class="icon">&#x2709;&#xFE0F;</span>
+        <h2>Need More Help?</h2>
+      </div>
+      <p>Send us an email and we'll get back to you as soon as possible. Please include your device model, OS version, and a description of the issue.</p>
+      <p><strong>Email:</strong> <a href="mailto:ogrebills@outlook.com?subject=OgreBill%20Support%20Request">ogrebills@outlook.com</a></p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 Suman Kumar &middot; OgreBill</p>
+    <p>
+      <a href="privacy-policy.html">Privacy Policy</a> &middot;
+      <a href="terms-of-service.html">Terms of Service</a> &middot;
+      <a href="impressum.html">Impressum</a> &middot;
+      <a href="app-info.html">App Info</a> &middot;
+      <a href="open-source-licenses.html">Open-Source Licenses</a>
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      var input = document.getElementById('searchInput');
+      var clearBtn = document.getElementById('searchClear');
+      var items = document.querySelectorAll('.searchable');
+      var noResults = document.getElementById('noResults');
+      function runSearch() {
+        var query = input.value.trim().toLowerCase();
+        clearBtn.style.display = query ? 'block' : 'none';
+        if (!query) {
+          items.forEach(function(el) { el.classList.remove('search-hidden'); });
+          noResults.style.display = 'none';
+          return;
+        }
+        var visibleCount = 0;
+        items.forEach(function(el) {
+          var text = (el.textContent + ' ' + (el.dataset.search || '')).toLowerCase();
+          var words = query.split(/\s+/);
+          var match = words.every(function(w) { return text.indexOf(w) !== -1; });
+          if (match) { el.classList.remove('search-hidden'); visibleCount++; }
+          else { el.classList.add('search-hidden'); }
+        });
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+      input.addEventListener('input', runSearch);
+      clearBtn.addEventListener('click', function () {
+        input.value = '';
+        runSearch();
+        input.focus();
+      });
+    })();
+  </script>
+
+</body>
+</html>
