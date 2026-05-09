@@ -307,7 +307,7 @@
       </div>
       <p>When you open OgreBill for the first time, a step-by-step setup wizard guides you through configuring your business. Each step has a unique colour theme and a progress indicator at the top.</p>
       <p><strong>Step 1 — Welcome</strong></p>
-      <p>A welcome screen introduces OgreBill's key features: professional invoicing, expense tracking, analytics, multi-sharing, and secure backups. Tap <strong>Get Started</strong> to begin.</p>
+      <p>A welcome screen introduces OgreBill's key features: professional invoicing, expense tracking, analytics, multi-sharing, and local backups. Tap <strong>Get Started</strong> to begin.</p>
       <p><strong>Step 2 — Backup Destination</strong></p>
       <p>Choose where your backups will be saved. Pick a folder on your device — ideally inside <strong>iCloud Drive</strong> for automatic cloud sync. If a previous backup is found, you can <strong>restore</strong> it right here.</p>
       <p><strong>Step 3 — Location</strong></p>
@@ -749,6 +749,9 @@
       <div class="tip tip-success">
         <strong>Where to find backups on your iPhone:</strong> All database backup files are also accessible in the <strong>Files app &rarr; On My iPhone &rarr; OgreBill</strong> folder. You can browse, copy, AirDrop, or move them from there at any time.
       </div>
+      <div class="tip tip-warn">
+        <strong>Security note:</strong> OgreBill backup files are standard local database (<code>.db</code>) files, not app-encrypted files. Store exported or shared backup copies only in trusted device, cloud, or computer storage.
+      </div>
     </div>
 
     <div class="section searchable" data-search="auto backup automatic scheduled daily weekly monthly frequency incremental premium files app where saved location iCloud sync">
@@ -865,6 +868,7 @@
         <li><strong>Back up at least once a week</strong> — daily if you invoice frequently.</li>
         <li><strong>Use a cloud-synced folder</strong> (iCloud Drive, Google Drive, OneDrive).</li>
         <li><strong>Keep multiple backups</strong> — don't delete old ones too soon.</li>
+        <li><strong>Treat <code>.db</code> backups like financial records</strong> — keep them only in trusted storage.</li>
         <li><strong>Test a restore occasionally</strong> — verify your backups actually work.</li>
         <li><strong>Export to Excel periodically</strong> — a spreadsheet is a readable safety net.</li>
         <li><strong>Enable Auto Backup</strong> so you're protected even when you forget.</li>
