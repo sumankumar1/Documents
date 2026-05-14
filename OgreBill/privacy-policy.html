@@ -194,8 +194,8 @@
         Backup files are standard local database (<code>.db</code>) files.
         OgreBill does not add separate app-level encryption to exported or shared backup files,
         so store backup copies only in locations you trust.
-        If you place that folder inside a cloud-synced directory (e.g., iCloud Drive,
-        Google Drive), the synchronisation is handled entirely by your operating system
+        If you place that folder inside a cloud-synced directory (e.g., iCloud Drive
+        or another Files-compatible cloud folder), the synchronisation is handled entirely by your operating system
         and is outside the scope of this app.
       </p>
     </div>
@@ -217,11 +217,11 @@
         <tbody>
           <tr>
             <td><strong>Photos / Gallery</strong></td>
-            <td>Attach QR code images (PayPal, UPI) to payment profiles, or set a business logo.</td>
+            <td>Attach QR code images to payment profiles, or set a business logo, from your photo library.</td>
             <td>No</td>
           </tr>
           <tr>
-            <td><strong>Biometrics (Face&nbsp;ID / Fingerprint)</strong></td>
+            <td><strong>Biometrics (Face&nbsp;ID / Touch&nbsp;ID)</strong></td>
             <td>Lock and unlock the app locally. Biometric data is processed by the OS and is never accessible to or stored by OgreBill.</td>
             <td>No</td>
           </tr>
@@ -229,6 +229,11 @@
             <td><strong>File System</strong></td>
             <td>Save exports (PDF, Excel) and backups to a folder you select.</td>
             <td>No</td>
+          </tr>
+          <tr>
+            <td><strong>Local Network</strong></td>
+            <td>When you choose QR invoice sharing, OgreBill temporarily serves that invoice PDF from your device to another device on the same Wi-Fi network or Personal Hotspot. The local link expires after 10 minutes or when the app moves to the background.</td>
+            <td>Only to the local recipient device you choose</td>
           </tr>
         </tbody>
       </table>
@@ -291,11 +296,11 @@
       </div>
       <p>
         OgreBill offers optional premium features via subscriptions managed through the
-        Apple App Store or Google Play Store. When you subscribe:
+        Apple App Store. When you subscribe:
       </p>
       <ul>
-        <li>Payment is processed entirely by Apple or Google — <strong>we never see or store your payment details</strong> (credit card number, billing address, etc.).</li>
-        <li>Apple/Google may share with us a transaction ID, purchase date, and subscription status — solely to unlock your premium features.</li>
+        <li>Payment is processed entirely by Apple — <strong>we never see or store your payment details</strong> (credit card number, billing address, etc.).</li>
+        <li>Apple may share with us a transaction ID, purchase date, and subscription status — solely to unlock your premium features.</li>
         <li>We do <strong>not</strong> use any third-party subscription management service. Purchases are handled directly through the platform's native in-app purchase APIs.</li>
       </ul>
       <p>
