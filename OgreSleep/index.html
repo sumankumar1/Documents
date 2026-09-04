@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OgreSleep — Smart Offline Alarm & Sleep Tracker</title>
+  <meta name="description" content="OgreSleep is a fully offline, privacy-first alarm clock and sleep tracker. Your sleep data never leaves your device." />
+  <meta name="theme-color" content="#6C63FF" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="OgreSleep — Smart Offline Alarm & Sleep Tracker" />
+  <meta property="og:description" content="Wake up smarter. Track your sleep. Zero data leaves your device." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --primary-dark: #5A52E0;
+      --accent: #FF6584;
+      --bg: #0D0D1A;
+      --surface: #1A1A2E;
+      --surface2: #16213E;
+      --text: #F0F0FF;
+      --text-muted: #8888AA;
+      --radius: 16px;
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,13,26,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(108,99,255,0.2);
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+    .nav-logo span { color: var(--primary); }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: var(--text-muted); font-size: 0.9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 24px; border-radius: 999px; font-weight: 600; font-size: 0.95rem;
+      transition: transform .15s, box-shadow .15s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(108,99,255,.4); text-decoration: none; }
+    .btn-outline { background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,.2); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 80px 24px 60px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(108,99,255,.25), transparent);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(108,99,255,.15); border: 1px solid rgba(108,99,255,.3);
+      color: #a09fff; border-radius: 999px; padding: 6px 16px; font-size: 0.82rem;
+      margin-bottom: 24px; letter-spacing: .5px;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 800; line-height: 1.1;
+      margin-bottom: 24px; letter-spacing: -1.5px;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-muted);
+      max-width: 560px; margin: 0 auto 40px;
+    }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .store-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--surface); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius); padding: 12px 20px; color: var(--text);
+      font-size: 0.9rem; transition: border-color .2s, transform .15s;
+    }
+    .store-badge:hover { border-color: var(--primary); transform: translateY(-2px); text-decoration: none; }
+    .store-badge .store-icon { font-size: 1.6rem; }
+    .store-badge .store-text small { display: block; font-size: 0.7rem; color: var(--text-muted); }
+    .store-badge .store-text strong { font-size: 1rem; }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--surface2); border-top: 1px solid rgba(255,255,255,.05);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      padding: 20px 24px;
+      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--text-muted); }
+    .trust-item .icon { font-size: 1.1rem; }
+
+    /* SECTIONS */
+    section { padding: 100px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--primary); font-weight: 600; margin-bottom: 12px;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-desc { color: var(--text-muted); font-size: 1.05rem; max-width: 560px; }
+
+    /* FEATURES GRID */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px; margin-top: 64px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius); padding: 32px;
+      transition: border-color .2s, transform .2s;
+    }
+    .feature-card:hover { border-color: rgba(108,99,255,.4); transform: translateY(-4px); }
+    .feature-icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; font-weight: 600; }
+    .feature-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; }
+
+    /* PRIVACY SECTION */
+    .privacy-section {
+      background: linear-gradient(135deg, rgba(108,99,255,.1), rgba(255,101,132,.1));
+      border: 1px solid rgba(108,99,255,.2); border-radius: 24px;
+      padding: 64px; text-align: center;
+    }
+    .privacy-section h2 { font-size: 2rem; }
+    .privacy-points {
+      display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 40px;
+    }
+    .privacy-point {
+      background: rgba(255,255,255,.05); border-radius: var(--radius);
+      padding: 24px; flex: 1; min-width: 200px; max-width: 260px;
+    }
+    .privacy-point .p-icon { font-size: 2rem; margin-bottom: 12px; }
+    .privacy-point h4 { font-size: 1rem; margin-bottom: 6px; }
+    .privacy-point p { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* PRICING */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px; margin-top: 64px;
+    }
+    .plan-card {
+      background: var(--surface); border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius); padding: 36px 28px; position: relative;
+      transition: border-color .2s, transform .2s;
+    }
+    .plan-card:hover { transform: translateY(-4px); }
+    .plan-card.featured {
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(108,99,255,.15), rgba(108,99,255,.05));
+    }
+    .plan-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--primary); color: #fff; border-radius: 999px;
+      padding: 4px 16px; font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+    }
+    .plan-name { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .plan-price { font-size: 2.5rem; font-weight: 800; }
+    .plan-price span { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
+    .plan-desc { color: var(--text-muted); font-size: 0.88rem; margin: 12px 0 24px; }
+    .plan-features { list-style: none; }
+    .plan-features li {
+      padding: 8px 0; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,.05);
+      display: flex; gap: 10px;
+    }
+    .plan-features li:last-child { border-bottom: none; }
+    .check { color: #4ade80; }
+    .cross { color: var(--text-muted); }
+
+    /* LEGAL LINKS */
+    .legal-links {
+      display: flex; gap: 24px; flex-wrap: wrap; margin-top: 24px;
+    }
+    .legal-links a {
+      background: var(--surface); border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius); padding: 16px 24px;
+      color: var(--text); display: flex; align-items: center; gap: 10px;
+      font-size: 0.9rem; transition: border-color .2s;
+    }
+    .legal-links a:hover { border-color: var(--primary); text-decoration: none; }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface2);
+      border-top: 1px solid rgba(255,255,255,.05);
+      padding: 48px 24px; text-align: center;
+    }
+    .footer-logo { font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; }
+    .footer-logo span { color: var(--primary); }
+    .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a { color: var(--text-muted); font-size: 0.88rem; }
+    .footer-links a:hover { color: var(--text); }
+    footer p { color: var(--text-muted); font-size: 0.82rem; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .privacy-section { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-logo">🦁 Ogre<span>Alarm</span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#pricing">Pricing</a>
+      <a href="help.html">Help</a>
+      <a href="support.html">Support</a>
+    </div>
+    <a href="#download" class="btn btn-primary">Download Free</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">🔒 100% Offline · Zero Data Collection</div>
+    <h1>
+      Wake up smarter.<br/>
+      Sleep <span class="grad">better</span>.
+    </h1>
+    <p>
+      OgreSleep is the privacy-first alarm clock and sleep tracker that lives entirely on your device.
+      No accounts. No cloud. No compromise.
+    </p>
+    <div class="hero-cta" id="download">
+      <a href="#" class="store-badge">
+        <span class="store-icon">🍎</span>
+        <span class="store-text">
+          <small>Download on the</small>
+          <strong>App Store</strong>
+        </span>
+      </a>
+      <a href="#" class="store-badge">
+        <span class="store-icon">▶</span>
+        <span class="store-text">
+          <small>Get it on</small>
+          <strong>Google Play</strong>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="icon">🔒</span> Zero data collection</div>
+    <div class="trust-item"><span class="icon">✈️</span> Works fully offline</div>
+    <div class="trust-item"><span class="icon">📱</span> iOS & Android</div>
+    <div class="trust-item"><span class="icon">🆓</span> Free to start</div>
+    <div class="trust-item"><span class="icon">💾</span> Local data backup</div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-label">Features</div>
+      <h2>Everything you need<br/>to sleep and wake well</h2>
+      <p class="section-desc">Built for people who take sleep seriously — and their privacy even more seriously.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⏰</div>
+          <h3>Smart Alarms</h3>
+          <p>Multiple alarms, repeating schedules, gradual volume wake-up, and alarm challenges that actually get you out of bed.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">😴</div>
+          <h3>Sleep Tracking</h3>
+          <p>Log sleep and wake times, track quality, view average sleep duration across 7, 30, or 90 days. Spot your patterns.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">😊</div>
+          <h3>How Do You Feel?</h3>
+          <p>Post-alarm mood check-in captures how rested you feel each morning. Correlate mood with sleep quality over time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Rich Analytics</h3>
+          <p>Beautiful charts for sleep duration, quality trends, mood correlation, and your personal sleep score — 100% on-device.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📄</div>
+          <h3>PDF Sleep Reports</h3>
+          <p>Generate a detailed sleep health report for any date range. Share with your doctor or keep for yourself.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💾</div>
+          <h3>Backup & Restore</h3>
+          <p>Your data, your control. Back up your sleep history to the iOS Files app or Android storage. Restore any time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📖</div>
+          <h3>Dream Journal</h3>
+          <p>Capture your dreams with mood tags, vividness scores, and recurring dream tracking. Browse your dream calendar.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🦁</div>
+          <h3>Playful Profile</h3>
+          <p>Your avatar evolves with your sleep habits. Unlock achievement badges. Track your all-time best streaks.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Beautiful Design</h3>
+          <p>Dark and light modes. 8 accent colors. Smooth animations. A sleep app that's actually a pleasure to look at.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section id="privacy">
+    <div class="container">
+      <div class="privacy-section">
+        <div class="section-label" style="text-align:center">Privacy Promise</div>
+        <h2>Your sleep data is <span style="color:var(--primary)">yours alone</span></h2>
+        <p style="color:var(--text-muted);margin-top:12px;max-width:520px;margin-left:auto;margin-right:auto;">
+          We built OgreSleep from the ground up to never need an internet connection.
+          No accounts, no servers, no analytics SDKs. Just you and your phone.
+        </p>
+        <div class="privacy-points">
+          <div class="privacy-point">
+            <div class="p-icon">🚫</div>
+            <h4>No Account Required</h4>
+            <p>Open the app and start immediately. We never ask for your email.</p>
+          </div>
+          <div class="privacy-point">
+            <div class="p-icon">🌐</div>
+            <h4>No Internet Access</h4>
+            <p>The app has zero network permissions. It literally cannot transmit your data.</p>
+          </div>
+          <div class="privacy-point">
+            <div class="p-icon">🔐</div>
+            <h4>Local Storage Only</h4>
+            <p>All data lives in an encrypted SQLite database on your device.</p>
+          </div>
+          <div class="privacy-point">
+            <div class="p-icon">📦</div>
+            <h4>Take Your Data</h4>
+            <p>Export everything as JSON, CSV, or a database backup. No lock-in.</p>
+          </div>
+        </div>
+        <div style="margin-top:40px">
+          <a href="privacy-policy.html" class="btn btn-outline">Read Full Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-label">Pricing</div>
+      <h2>Simple, honest pricing</h2>
+      <p class="section-desc">Start free. Upgrade when you're ready. No tricks, no dark patterns.</p>
+      <div class="pricing-grid">
+        <!-- FREE -->
+        <div class="plan-card">
+          <div class="plan-name">Free</div>
+          <div class="plan-price">$0</div>
+          <div class="plan-desc">All the basics to get started</div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> 3 alarms</li>
+            <li><span class="check">✓</span> 7-day sleep history</li>
+            <li><span class="check">✓</span> Daily mood check-in</li>
+            <li><span class="check">✓</span> Basic sleep stats</li>
+            <li><span class="cross">—</span> PDF reports</li>
+            <li><span class="cross">—</span> Backup & restore</li>
+            <li><span class="cross">—</span> 30/90-day analytics</li>
+            <li><span class="cross">—</span> Dream journal</li>
+          </ul>
+        </div>
+        <!-- MONTHLY -->
+        <div class="plan-card">
+          <div class="plan-name">Monthly</div>
+          <div class="plan-price">$2.99 <span>/ month</span></div>
+          <div class="plan-desc">7-day free trial included</div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Unlimited alarms</li>
+            <li><span class="check">✓</span> Full sleep history</li>
+            <li><span class="check">✓</span> PDF reports</li>
+            <li><span class="check">✓</span> Backup & restore</li>
+            <li><span class="check">✓</span> Dream journal</li>
+            <li><span class="check">✓</span> 30 & 90-day analytics</li>
+            <li><span class="check">✓</span> All achievement badges</li>
+            <li><span class="check">✓</span> Priority support badge</li>
+          </ul>
+        </div>
+        <!-- ANNUAL -->
+        <div class="plan-card featured">
+          <div class="plan-badge">🔥 Most Popular — Save 44%</div>
+          <div class="plan-name">Annual</div>
+          <div class="plan-price">$19.99 <span>/ year</span></div>
+          <div class="plan-desc">≈ $1.67/month · 7-day free trial</div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Everything in Monthly</li>
+            <li><span class="check">✓</span> Save $15.89 vs monthly</li>
+            <li><span class="check">✓</span> Annual supporter badge</li>
+            <li><span class="check">✓</span> Early access to new features</li>
+            <li><span class="check">✓</span> Priority support</li>
+          </ul>
+        </div>
+        <!-- LIFETIME -->
+        <div class="plan-card">
+          <div class="plan-name">Lifetime</div>
+          <div class="plan-price">$39.99 <span>one-time</span></div>
+          <div class="plan-desc">Pay once, own forever</div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Everything in Annual</li>
+            <li><span class="check">✓</span> No recurring charges ever</li>
+            <li><span class="check">✓</span> All future features included</li>
+            <li><span class="check">✓</span> Lifetime member badge</li>
+            <li><span class="check">✓</span> Thank-you credit in About</li>
+          </ul>
+        </div>
+      </div>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-top:24px;text-align:center">
+        Subscriptions managed by Apple App Store / Google Play Store.
+        Cancel any time. <a href="terms-of-service.html">Terms apply</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- LEGAL DOCS -->
+  <section>
+    <div class="container">
+      <div class="section-label">Legal & Help</div>
+      <h2>Transparency first</h2>
+      <p class="section-desc">Everything you need to know about OgreSleep, in plain English.</p>
+      <div class="legal-links">
+        <a href="privacy-policy.html">🔒 Privacy Policy</a>
+        <a href="terms-of-service.html">📋 Terms of Service</a>
+        <a href="help.html">❓ Help Center</a>
+        <a href="support.html">💬 Contact Support</a>
+        <a href="changelog.html">📝 Changelog</a>
+        <a href="open-source.html">⚡ Open Source Licenses</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">🦁 Ogre<span>Alarm</span></div>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="help.html">Help</a>
+      <a href="support.html">Support</a>
+      <a href="changelog.html">Changelog</a>
+    </div>
+    <p>© 2026 OgreSleep. Built with ❤️ for people who value sleep and privacy.</p>
+    <p style="margin-top:8px">OgreSleep is not affiliated with Apple Inc. or Google LLC.</p>
+  </footer>
+
+</body>
+</html>

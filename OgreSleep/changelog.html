@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog — OgreSleep</title>
+  <style>
+    :root { --primary: #6C63FF; --bg: #0D0D1A; --surface: #1A1A2E; --text: #F0F0FF; --text-muted: #8888AA; --radius: 16px; --font: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; }
+    a { color: var(--primary); }
+    nav { background: rgba(13,13,26,.95); border-bottom: 1px solid rgba(108,99,255,.2); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--primary); }
+    .back { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; }
+    .hero-sm { background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(108,99,255,.2), transparent); padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(108,99,255,.15); border: 1px solid rgba(108,99,255,.3); color: #a09fff; border-radius: 999px; padding: 4px 14px; font-size: 0.8rem; margin-bottom: 16px; }
+    .hero-sm h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700; }
+    .hero-sm p { color: var(--text-muted); margin-top: 12px; }
+    main { max-width: 800px; margin: 0 auto; padding: 48px 24px 96px; }
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: rgba(108,99,255,.2); }
+    .release { position: relative; margin-bottom: 56px; }
+    .release::before { content: ''; position: absolute; left: -26px; top: 6px; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; border: 2px solid var(--bg); }
+    .release.latest::before { background: #4ade80; box-shadow: 0 0 12px rgba(74,222,128,.5); }
+    .release-header { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .release-version { font-size: 1.3rem; font-weight: 700; }
+    .release-date { color: var(--text-muted); font-size: 0.88rem; }
+    .release-badge { background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.3); color: #4ade80; border-radius: 999px; padding: 2px 12px; font-size: 0.75rem; font-weight: 600; }
+    .change-group { margin-bottom: 16px; }
+    .change-type { font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+    .change-type.new { color: #60a5fa; }
+    .change-type.improved { color: #a78bfa; }
+    .change-type.fixed { color: #4ade80; }
+    .change-type.removed { color: #f87171; }
+    .change-list { list-style: none; }
+    .change-list li { padding: 5px 0; font-size: 0.93rem; color: var(--text-muted); display: flex; gap: 10px; }
+    .change-list li::before { content: '—'; color: rgba(255,255,255,.2); flex-shrink: 0; }
+    footer { text-align: center; padding: 32px 24px; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid rgba(255,255,255,.05); }
+    footer a { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">🦁 Ogre<span>Alarm</span></a>
+    <a href="index.html" class="back">← Back to home</a>
+  </nav>
+
+  <div class="hero-sm">
+    <div class="badge">📝 Changelog</div>
+    <h1>What's New</h1>
+    <p>Every release, every change — documented here.</p>
+  </div>
+
+  <main>
+    <div class="timeline">
+
+      <!-- v1.0.0 -->
+      <div class="release latest">
+        <div class="release-header">
+          <span class="release-version">v1.0.0</span>
+          <span class="release-date">May 2026</span>
+          <span class="release-badge">✨ Initial Launch</span>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type new">✦ New</div>
+          <ul class="change-list">
+            <li>Multiple alarm creation with repeat, label, tone, and challenge settings</li>
+            <li>Gradual volume wake-up option for gentle mornings</li>
+            <li>Alarm challenges: Math, Shake, and Barcode scan</li>
+            <li>Sleep session tracking (manual and automatic via alarm dismissal)</li>
+            <li>"How do you feel?" post-alarm mood and energy check-in</li>
+            <li>Dream Journal with mood tagging, vividness, and calendar view</li>
+            <li>Sleep analytics with duration, quality, and mood trend charts</li>
+            <li>Sleep Score (0–100) composite wellness index</li>
+            <li>PDF sleep report generation with full sharing support</li>
+            <li>SQLite database backup to iOS Files / Android accessible folder</li>
+            <li>Restore from backup with file picker</li>
+            <li>Export data as JSON and CSV</li>
+            <li>Playful avatar profile with 5 sleep-state evolutions</li>
+            <li>20 achievement badges with unlock animations</li>
+            <li>8 accent color themes + dark / light / system modes</li>
+            <li>7-day free trial on monthly and annual Premium plans</li>
+            <li>Lifetime purchase option ($39.99)</li>
+            <li>Beautiful 5-page animated onboarding flow</li>
+            <li>100% offline — zero internet access required</li>
+            <li>Bedtime reminder notifications</li>
+            <li>In-app Help Center and FAQ</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Future placeholder -->
+      <div class="release">
+        <div class="release-header">
+          <span class="release-version">v1.1.0</span>
+          <span class="release-date">Coming Soon</span>
+        </div>
+        <div class="change-group">
+          <div class="change-type new">✦ Planned</div>
+          <ul class="change-list">
+            <li>Home screen widget (next alarm, sleep streak)</li>
+            <li>Alarm tone library expansion (10 new nature sounds)</li>
+            <li>Sleep goal streak notifications</li>
+            <li>iPad and Android tablet optimized layouts</li>
+            <li>CSV import for sleep data migration from other apps</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="index.html">Home</a> · <a href="privacy-policy.html">Privacy Policy</a> · <a href="help.html">Help</a> · <a href="support.html">Support</a></p>
+    <p style="margin-top:8px">© 2026 OgreSleep. All rights reserved.</p>
+  </footer>
+</body>
+</html>

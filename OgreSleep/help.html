@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help Center — OgreSleep</title>
+  <style>
+    :root { --primary: #6C63FF; --bg: #0D0D1A; --surface: #1A1A2E; --surface2: #16213E; --text: #F0F0FF; --text-muted: #8888AA; --radius: 16px; --font: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; }
+    a { color: var(--primary); }
+    nav { background: rgba(13,13,26,.95); border-bottom: 1px solid rgba(108,99,255,.2); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--primary); }
+    .back { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; }
+    .hero-sm { background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(108,99,255,.2), transparent); padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(108,99,255,.15); border: 1px solid rgba(108,99,255,.3); color: #a09fff; border-radius: 999px; padding: 4px 14px; font-size: 0.8rem; margin-bottom: 16px; }
+    .hero-sm h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700; }
+    .hero-sm p { color: var(--text-muted); margin-top: 12px; font-size: 1rem; }
+    main { max-width: 900px; margin: 0 auto; padding: 48px 24px 96px; }
+    /* CATEGORIES */
+    .categories { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 64px; }
+    .cat-card { background: var(--surface); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding: 20px; text-align: center; cursor: pointer; transition: border-color .2s, transform .15s; text-decoration: none; color: var(--text); }
+    .cat-card:hover { border-color: var(--primary); transform: translateY(-2px); text-decoration: none; }
+    .cat-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .cat-name { font-size: 0.88rem; font-weight: 500; }
+    /* FAQ SECTIONS */
+    .faq-section { margin-bottom: 56px; }
+    .faq-section-title { font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .faq-item { border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; }
+    .faq-q { display: flex; justify-content: space-between; align-items: flex-start; padding: 18px 20px; cursor: pointer; font-size: 0.97rem; font-weight: 500; user-select: none; gap: 12px; }
+    .faq-q .chevron { flex-shrink: 0; color: var(--text-muted); transition: transform .2s; }
+    .faq-item.open .chevron { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 20px 18px; color: var(--text-muted); font-size: 0.93rem; line-height: 1.65; border-top: 1px solid rgba(255,255,255,.05); padding-top: 16px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a ul { padding-left: 18px; margin-top: 8px; }
+    .faq-a ul li { margin-bottom: 6px; }
+    .faq-a .step { background: rgba(108,99,255,.1); border-left: 3px solid var(--primary); border-radius: 4px; padding: 12px 16px; margin: 12px 0; }
+    /* CONTACT CTA */
+    .contact-cta { background: linear-gradient(135deg, rgba(108,99,255,.15), rgba(255,101,132,.1)); border: 1px solid rgba(108,99,255,.3); border-radius: 24px; padding: 48px; text-align: center; }
+    .contact-cta h2 { font-size: 1.5rem; margin-bottom: 12px; }
+    .contact-cta p { color: var(--text-muted); margin-bottom: 24px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 999px; font-weight: 600; font-size: 0.95rem; background: var(--primary); color: #fff; text-decoration: none; transition: transform .15s; }
+    .btn:hover { transform: translateY(-2px); text-decoration: none; }
+    footer { text-align: center; padding: 32px 24px; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid rgba(255,255,255,.05); }
+    footer a { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">🦁 Ogre<span>Alarm</span></a>
+    <a href="index.html" class="back">← Back to home</a>
+  </nav>
+
+  <div class="hero-sm">
+    <div class="badge">❓ Help Center</div>
+    <h1>How can we help?</h1>
+    <p>Find answers to common questions about OgreSleep</p>
+  </div>
+
+  <main>
+    <!-- CATEGORY GRID -->
+    <div class="categories">
+      <a href="#alarms" class="cat-card"><div class="cat-icon">⏰</div><div class="cat-name">Alarms</div></a>
+      <a href="#sleep" class="cat-card"><div class="cat-icon">😴</div><div class="cat-name">Sleep Tracking</div></a>
+      <a href="#analytics" class="cat-card"><div class="cat-icon">📊</div><div class="cat-name">Analytics</div></a>
+      <a href="#backup" class="cat-card"><div class="cat-icon">💾</div><div class="cat-name">Backup & Restore</div></a>
+      <a href="#subscription" class="cat-card"><div class="cat-icon">⭐</div><div class="cat-name">Subscription</div></a>
+      <a href="#privacy" class="cat-card"><div class="cat-icon">🔒</div><div class="cat-name">Privacy & Data</div></a>
+      <a href="#troubleshoot" class="cat-card"><div class="cat-icon">🔧</div><div class="cat-name">Troubleshooting</div></a>
+      <a href="#account" class="cat-card"><div class="cat-icon">👤</div><div class="cat-name">Profile</div></a>
+    </div>
+
+    <!-- ALARMS -->
+    <div class="faq-section" id="alarms">
+      <div class="faq-section-title">⏰ Alarms</div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I create a new alarm? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          <div class="step">Tap the <strong>+</strong> button on the Alarms tab → Set your time → Choose repeat days → Tap Save.</div>
+          You can also set an alarm tone, snooze duration, alarm label, and challenge type from the creation screen.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">My alarm didn't go off. What happened? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          This is almost always caused by OS-level battery optimization. Try these steps:
+          <ul>
+            <li><strong>Android:</strong> Go to Settings → Battery → Battery Optimization → Find OgreSleep → Select "Don't optimize." Also go to Settings → Apps → OgreSleep → enable "Allow background activity."</li>
+            <li><strong>iOS:</strong> Ensure notifications are enabled for OgreSleep (Settings → Notifications → OgreSleep → Allow Notifications). On iOS, alarms use notification scheduling and require notification permission.</li>
+            <li>Make sure Do Not Disturb / Focus Mode allows OgreSleep notifications, or enable "Time Sensitive" notifications.</li>
+            <li>Do not force-quit the app on Android — this stops background services.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is Smart Wake and how does it work? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          Smart Wake is a feature that wakes you within a configurable window (e.g., 30 minutes) before your scheduled alarm time — ideally during a lighter phase of sleep based on movement patterns. Enable it when creating an alarm by setting a "Smart Window" duration. Note: Smart Wake requires the app to have background activity permission.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What are alarm challenges? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          Alarm challenges are mini-tasks you must complete before the alarm is dismissed, designed to fully wake you up:
+          <ul>
+            <li><strong>Math:</strong> Solve simple arithmetic problems</li>
+            <li><strong>Shake:</strong> Shake your phone vigorously for 5 seconds</li>
+            <li><strong>Barcode:</strong> Scan a barcode (set it up in advance — great for scanning the cereal box in the kitchen!)</li>
+          </ul>
+          Set the challenge difficulty in the alarm's edit screen.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I set a gradual volume increase? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          Yes! Enable "Gradual Volume" when creating or editing an alarm. The volume will start at 10% and rise to your set volume over 30 seconds, for a gentler wake.
+        </div>
+      </div>
+    </div>
+
+    <!-- SLEEP TRACKING -->
+    <div class="faq-section" id="sleep">
+      <div class="faq-section-title">😴 Sleep Tracking</div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I log my sleep? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          There are two ways:
+          <ul>
+            <li><strong>Automatic:</strong> Tap "Going to Sleep" on the home screen before bed. When your alarm fires and you dismiss it, the sleep session is automatically ended and saved.</li>
+            <li><strong>Manual:</strong> Go to Sleep → History → tap the <strong>+</strong> button → enter your bed time, wake time, and quality rating.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is the "How do you feel?" screen? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          After dismissing your alarm, OgreSleep shows a quick mood check-in. Tap the emoji that best describes how you feel, rate your energy level, and note whether you remember dreaming. This data is linked to your sleep log and appears in your analytics. You can skip it at any time — it takes under 10 seconds.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is my Sleep Score? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          Your Sleep Score (0–100) is calculated from four components:
+          <ul>
+            <li><strong>Duration (40%):</strong> How close your sleep was to your 8-hour goal</li>
+            <li><strong>Quality (30%):</strong> Your self-rated sleep quality</li>
+            <li><strong>Consistency (20%):</strong> How consistent your bedtime and wake time are</li>
+            <li><strong>Mood (10%):</strong> Your post-alarm mood rating</li>
+          </ul>
+          A score of 80+ is excellent. 60–79 is good. Below 60 suggests an area to improve.
+        </div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="faq-section" id="analytics">
+      <div class="faq-section-title">📊 Analytics & PDF Reports</div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I generate a PDF sleep report? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          <div class="step">Analytics tab → tap "Generate Report" → Choose date range (7 / 30 days or custom) → tap "Create PDF" → Share or Save.</div>
+          The PDF includes a cover page, summary statistics, sleep duration chart, quality trend, mood log, and your sleep score breakdown. PDF export requires Premium.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How far back does the analytics go? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          Free users can view up to 7 days of history. Premium users have access to their full sleep history with no time limit. Charts support 7-day, 30-day, and 90-day views.
+        </div>
+      </div>
+    </div>
+
+    <!-- BACKUP -->
+    <div class="faq-section" id="backup">
+      <div class="faq-section-title">💾 Backup & Restore</div>
+
+      <div class="faq-item">
+        <div class="faq-q">Where are my backups saved? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          <ul>
+            <li><strong>iPhone / iPad:</strong> Backups are saved to the iOS Files app under <strong>On My iPhone → OgreSleep → Backups</strong>. Open the Files app, tap "On My iPhone," then find the OgreSleep folder.</li>
+            <li><strong>Android:</strong> Backups are saved to <strong>Internal Storage → Android → data → com.ogresleep.ogresleep → files → Backups</strong>. You can access this folder via a file manager app.</li>
+          </ul>
+          Backup files have the format: <code>ogresleep_backup_YYYYMMDD_HHMMSS.db</code>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I restore from a backup? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          <div class="step">Settings → Backup & Restore → Restore → tap "Choose Backup File" → select your .db file → Confirm Restore.</div>
+          <strong>Warning:</strong> Restoring will replace all current data with the backup. You can create a backup of your current data before restoring. The app will restart after a successful restore.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I transfer data to a new phone? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          Yes! Create a backup on your old phone, transfer the .db file to your new phone (via AirDrop, email, files app, etc.), then use Restore on the new device. Make sure OgreSleep is installed on the new phone first.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I export my data as CSV or JSON? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          <div class="step">Settings → Backup & Restore → Export Data → Choose format (JSON or CSV) → Share or Save.</div>
+          CSV files are compatible with Excel, Google Sheets, and Numbers. JSON includes all fields and can be used for custom analysis.
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBSCRIPTION -->
+    <div class="faq-section" id="subscription">
+      <div class="faq-section-title">⭐ Subscription</div>
+
+      <div class="faq-item">
+        <div class="faq-q">What's included in Premium? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          Premium unlocks: unlimited alarms, full sleep history, 30 &amp; 90-day analytics, PDF report generation, backup &amp; restore, dream journal, all achievement badges, and priority support badge. See the <a href="index.html#pricing">pricing page</a> for a full comparison.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I cancel my subscription? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          <ul>
+            <li><strong>iPhone:</strong> Settings → [Your Name] → Subscriptions → OgreSleep → Cancel Subscription</li>
+            <li><strong>Android:</strong> Google Play → Profile icon → Payments & subscriptions → Subscriptions → OgreSleep → Cancel</li>
+          </ul>
+          Cancellation takes effect at the end of the current billing period. You retain Premium access until then.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">I switched phones. How do I restore my Premium? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          <div class="step">Open OgreSleep → Settings → Subscription → tap "Restore Purchases."</div>
+          Make sure you are signed in with the same Apple ID or Google account used for the original purchase.
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIVACY -->
+    <div class="faq-section" id="privacy">
+      <div class="faq-section-title">🔒 Privacy & Data</div>
+
+      <div class="faq-item">
+        <div class="faq-q">Does OgreSleep collect my personal data? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          No. OgreSleep collects zero personal data. All data you enter stays exclusively on your device. The app has no internet access and cannot transmit your data anywhere. Read our full <a href="privacy-policy.html">Privacy Policy</a>.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I delete all my data? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          <div class="step">Settings → Privacy → Delete All Data → Type "DELETE" to confirm.</div>
+          This permanently deletes all alarms, sleep logs, mood entries, dream entries, profile data, and backups. This action cannot be undone.
+        </div>
+      </div>
+    </div>
+
+    <!-- TROUBLESHOOTING -->
+    <div class="faq-section" id="troubleshoot">
+      <div class="faq-section-title">🔧 Troubleshooting</div>
+
+      <div class="faq-item">
+        <div class="faq-q">The app is crashing. What should I do? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          <ul>
+            <li>Force close the app and reopen it</li>
+            <li>Restart your device</li>
+            <li>Ensure you have the latest version of OgreSleep installed</li>
+            <li>If the crash persists, go to Settings → Privacy → Export Crash Log and send it to <a href="mailto:support@ogresleep.app">support@ogresleep.app</a></li>
+          </ul>
+          We take crash reports very seriously and aim to respond within 48 hours.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">The alarm sound is not playing. <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          <ul>
+            <li>Check your device is not in Silent mode (iPhone: check the physical ring/silent switch)</li>
+            <li>Check the volume on your alarm settings is above 0</li>
+            <li>On iPhone, ensure "Allow Critical Alerts" is enabled if your alarm is set to use that feature</li>
+            <li>Test by creating a test alarm 1 minute in the future</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="faq-section" id="account">
+      <div class="faq-section-title">👤 Profile & Achievements</div>
+
+      <div class="faq-item">
+        <div class="faq-q">How does my avatar evolve? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          Your avatar reflects your current sleep health. It has 5 states based on your 7-day average sleep score: Exhausted → Tired → Neutral → Rested → Energized. Consistently good sleep unlocks the happiest avatar state!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I unlock achievement badges? <span class="chevron">▼</span></div>
+        <div class="faq-a">
+          Badges are unlocked automatically when you meet their conditions. For example, log sleep 7 days in a row to earn the "Week Warrior" badge. Tap any locked badge in the Achievements screen to see its unlock condition.
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT CTA -->
+    <div class="contact-cta">
+      <h2>Still need help?</h2>
+      <p>Our support team usually responds within 24–48 hours.</p>
+      <a href="support.html" class="btn">💬 Contact Support</a>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="index.html">Home</a> · <a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-of-service.html">Terms</a> · <a href="support.html">Support</a></p>
+    <p style="margin-top:8px">© 2026 OgreSleep. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Source Licenses — OgreSleep</title>
+  <style>
+    :root { --primary: #6C63FF; --bg: #0D0D1A; --surface: #1A1A2E; --text: #F0F0FF; --text-muted: #8888AA; --radius: 12px; --font: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; }
+    a { color: var(--primary); }
+    nav { background: rgba(13,13,26,.95); border-bottom: 1px solid rgba(108,99,255,.2); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--primary); }
+    .back { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; }
+    .hero-sm { background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(108,99,255,.2), transparent); padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(108,99,255,.15); border: 1px solid rgba(108,99,255,.3); color: #a09fff; border-radius: 999px; padding: 4px 14px; font-size: 0.8rem; margin-bottom: 16px; }
+    .hero-sm h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; }
+    .hero-sm p { color: var(--text-muted); margin-top: 12px; }
+    main { max-width: 900px; margin: 0 auto; padding: 48px 24px 96px; }
+    .lib-grid { display: flex; flex-direction: column; gap: 12px; }
+    .lib-card { background: var(--surface); border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 20px 24px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .lib-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+    .lib-info p { color: var(--text-muted); font-size: 0.88rem; margin: 0; }
+    .lib-meta { display: flex; gap: 10px; align-items: center; flex-shrink: 0; flex-wrap: wrap; }
+    .lib-badge { background: rgba(255,255,255,.06); border-radius: 999px; padding: 3px 12px; font-size: 0.78rem; color: var(--text-muted); }
+    .lib-badge.mit { background: rgba(74,222,128,.1); color: #4ade80; }
+    .lib-badge.bsd { background: rgba(96,165,250,.1); color: #60a5fa; }
+    .lib-badge.apache { background: rgba(251,146,60,.1); color: #fb923c; }
+    footer { text-align: center; padding: 32px 24px; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid rgba(255,255,255,.05); }
+    footer a { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">🦁 Ogre<span>Alarm</span></a>
+    <a href="index.html" class="back">← Back to home</a>
+  </nav>
+
+  <div class="hero-sm">
+    <div class="badge">⚡ Open Source</div>
+    <h1>Open Source Licenses</h1>
+    <p>OgreSleep is built on the shoulders of amazing open source projects.</p>
+  </div>
+
+  <main>
+    <p style="color:var(--text-muted);margin-bottom:40px;font-size:0.95rem">
+      The following third-party libraries are used in OgreSleep. We are grateful to all the contributors who make these projects possible.
+    </p>
+
+    <div class="lib-grid">
+      <div class="lib-card">
+        <div class="lib-info"><h3>Flutter</h3><p>Google's UI toolkit for building natively compiled applications for mobile, web, and desktop.</p></div>
+        <div class="lib-meta"><span class="lib-badge bsd">BSD 3-Clause</span><a href="https://flutter.dev" target="_blank">flutter.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>Drift (moor)</h3><p>Reactive persistence library for Flutter and Dart, built on SQLite.</p></div>
+        <div class="lib-meta"><span class="lib-badge mit">MIT</span><a href="https://drift.simonbinder.eu" target="_blank">drift.simonbinder.eu</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>Riverpod</h3><p>A reactive caching and data-binding framework. An improvement of Provider.</p></div>
+        <div class="lib-meta"><span class="lib-badge mit">MIT</span><a href="https://riverpod.dev" target="_blank">riverpod.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>GoRouter</h3><p>A declarative routing package for Flutter, based on Router API.</p></div>
+        <div class="lib-meta"><span class="lib-badge bsd">BSD 3-Clause</span><a href="https://pub.dev/packages/go_router" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>flutter_local_notifications</h3><p>A cross-platform plugin for displaying local notifications.</p></div>
+        <div class="lib-meta"><span class="lib-badge bsd">BSD 2-Clause</span><a href="https://pub.dev/packages/flutter_local_notifications" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>fl_chart</h3><p>A powerful Flutter chart library supporting Line Charts, Bar Charts, and more.</p></div>
+        <div class="lib-meta"><span class="lib-badge mit">MIT</span><a href="https://pub.dev/packages/fl_chart" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>pdf (dart_pdf)</h3><p>A PDF creation library for Dart.</p></div>
+        <div class="lib-meta"><span class="lib-badge apache">Apache 2.0</span><a href="https://pub.dev/packages/pdf" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>printing</h3><p>Plugin that allows Flutter apps to generate and print documents.</p></div>
+        <div class="lib-meta"><span class="lib-badge apache">Apache 2.0</span><a href="https://pub.dev/packages/printing" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>just_audio</h3><p>A feature-rich audio player for Flutter.</p></div>
+        <div class="lib-meta"><span class="lib-badge mit">MIT</span><a href="https://pub.dev/packages/just_audio" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>flutter_animate</h3><p>Adds beautiful animated effects to Flutter widgets.</p></div>
+        <div class="lib-meta"><span class="lib-badge mit">MIT</span><a href="https://pub.dev/packages/flutter_animate" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>lottie</h3><p>Render After Effects animations natively on Flutter.</p></div>
+        <div class="lib-meta"><span class="lib-badge mit">MIT</span><a href="https://pub.dev/packages/lottie" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>file_picker</h3><p>Flutter plugin for selecting files from the file system.</p></div>
+        <div class="lib-meta"><span class="lib-badge mit">MIT</span><a href="https://pub.dev/packages/file_picker" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>path_provider</h3><p>Flutter plugin for finding commonly used locations on the filesystem.</p></div>
+        <div class="lib-meta"><span class="lib-badge bsd">BSD 3-Clause</span><a href="https://pub.dev/packages/path_provider" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>share_plus</h3><p>Flutter plugin for sharing content via the platform share UI.</p></div>
+        <div class="lib-meta"><span class="lib-badge bsd">BSD 3-Clause</span><a href="https://pub.dev/packages/share_plus" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>in_app_purchase</h3><p>Flutter plugin for in-app purchases (StoreKit / Play Billing).</p></div>
+        <div class="lib-meta"><span class="lib-badge bsd">BSD 3-Clause</span><a href="https://pub.dev/packages/in_app_purchase" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>flutter_secure_storage</h3><p>Flutter plugin for securely storing data on disk.</p></div>
+        <div class="lib-meta"><span class="lib-badge bsd">BSD 3-Clause</span><a href="https://pub.dev/packages/flutter_secure_storage" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>in_app_review</h3><p>Flutter plugin to request an in-app review / store rating.</p></div>
+        <div class="lib-meta"><span class="lib-badge mit">MIT</span><a href="https://pub.dev/packages/in_app_review" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>android_alarm_manager_plus</h3><p>Flutter plugin for scheduling and running Dart code in the background on Android.</p></div>
+        <div class="lib-meta"><span class="lib-badge bsd">BSD 3-Clause</span><a href="https://pub.dev/packages/android_alarm_manager_plus" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>sensors_plus</h3><p>Flutter plugin for accessing accelerometer and gyroscope sensors.</p></div>
+        <div class="lib-meta"><span class="lib-badge bsd">BSD 3-Clause</span><a href="https://pub.dev/packages/sensors_plus" target="_blank">pub.dev</a></div>
+      </div>
+      <div class="lib-card">
+        <div class="lib-info"><h3>mobile_scanner</h3><p>Flutter plugin for QR and barcode scanning using MLKit.</p></div>
+        <div class="lib-meta"><span class="lib-badge mit">MIT</span><a href="https://pub.dev/packages/mobile_scanner" target="_blank">pub.dev</a></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="index.html">Home</a> · <a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-of-service.html">Terms</a> · <a href="help.html">Help</a></p>
+    <p style="margin-top:8px">© 2026 OgreSleep. All rights reserved.</p>
+  </footer>
+</body>
+</html>

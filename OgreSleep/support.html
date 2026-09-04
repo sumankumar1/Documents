@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Support — OgreSleep</title>
+  <style>
+    :root { --primary: #6C63FF; --bg: #0D0D1A; --surface: #1A1A2E; --text: #F0F0FF; --text-muted: #8888AA; --radius: 16px; --font: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; }
+    a { color: var(--primary); }
+    nav { background: rgba(13,13,26,.95); border-bottom: 1px solid rgba(108,99,255,.2); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--primary); }
+    .back { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; }
+    .hero-sm { background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(108,99,255,.2), transparent); padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(108,99,255,.15); border: 1px solid rgba(108,99,255,.3); color: #a09fff; border-radius: 999px; padding: 4px 14px; font-size: 0.8rem; margin-bottom: 16px; }
+    .hero-sm h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700; }
+    .hero-sm p { color: var(--text-muted); margin-top: 12px; }
+    main { max-width: 700px; margin: 0 auto; padding: 48px 24px 96px; }
+    .contact-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 48px; }
+    .contact-card { background: var(--surface); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding: 24px; text-align: center; text-decoration: none; color: var(--text); transition: border-color .2s, transform .15s; }
+    .contact-card:hover { border-color: var(--primary); transform: translateY(-2px); text-decoration: none; }
+    .contact-card .c-icon { font-size: 2rem; margin-bottom: 10px; }
+    .contact-card h3 { font-size: 0.95rem; margin-bottom: 4px; }
+    .contact-card p { color: var(--text-muted); font-size: 0.82rem; margin: 0; }
+    .form-section h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 24px; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-muted); }
+    input, select, textarea {
+      width: 100%; background: var(--surface); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px; color: var(--text); padding: 12px 16px; font-size: 0.95rem;
+      font-family: inherit; transition: border-color .2s; outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--primary); }
+    select option { background: var(--surface); }
+    textarea { resize: vertical; min-height: 120px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 32px; border-radius: 999px; font-weight: 600; font-size: 0.95rem; background: var(--primary); color: #fff; border: none; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(108,99,255,.4); }
+    .note { color: var(--text-muted); font-size: 0.85rem; margin-top: 12px; }
+    .sla-box { background: rgba(108,99,255,.08); border: 1px solid rgba(108,99,255,.2); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 40px; }
+    .sla-box p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+    .sla-box strong { color: var(--text); }
+    .success-msg { display: none; background: rgba(74, 222, 128, .1); border: 1px solid rgba(74, 222, 128, .3); border-radius: var(--radius); padding: 20px; text-align: center; color: #4ade80; }
+    footer { text-align: center; padding: 32px 24px; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid rgba(255,255,255,.05); }
+    footer a { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">🦁 Ogre<span>Alarm</span></a>
+    <a href="index.html" class="back">← Back to home</a>
+  </nav>
+
+  <div class="hero-sm">
+    <div class="badge">💬 Support</div>
+    <h1>Contact Support</h1>
+    <p>We're here to help. Usually respond within 24–48 hours.</p>
+  </div>
+
+  <main>
+    <!-- CONTACT OPTIONS -->
+    <div class="contact-options">
+      <a href="help.html" class="contact-card">
+        <div class="c-icon">❓</div>
+        <h3>Help Center</h3>
+        <p>Browse FAQs and guides</p>
+      </a>
+      <a href="mailto:support@ogresleep.app" class="contact-card">
+        <div class="c-icon">📧</div>
+        <h3>Email Support</h3>
+        <p>support@ogresleep.app</p>
+      </a>
+      <a href="mailto:bugs@ogresleep.app" class="contact-card">
+        <div class="c-icon">🐛</div>
+        <h3>Bug Report</h3>
+        <p>bugs@ogresleep.app</p>
+      </a>
+    </div>
+
+    <!-- SLA NOTE -->
+    <div class="sla-box">
+      <p>⏱️ <strong>Response times:</strong> General support — within 48 hours. Bug reports — within 24 hours. Premium subscribers — within 12 hours. We read every message.</p>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="form-section">
+      <h2>Send us a message</h2>
+      <form id="supportForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Alex Smith" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option value="">— Select a category —</option>
+            <option value="alarm">Alarm not working</option>
+            <option value="sleep">Sleep tracking issue</option>
+            <option value="backup">Backup / Restore issue</option>
+            <option value="subscription">Subscription / Billing</option>
+            <option value="bug">Bug report</option>
+            <option value="feature">Feature request</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="platform">Platform</label>
+          <select id="platform" name="platform">
+            <option value="">— Select your device —</option>
+            <option value="ios">iPhone / iPad (iOS)</option>
+            <option value="android">Android</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="version">App Version (optional)</label>
+          <input type="text" id="version" name="version" placeholder="e.g. 1.0.2 (found in Settings → About)" />
+        </div>
+        <div class="form-group">
+          <label for="message">Describe your issue</label>
+          <textarea id="message" name="message" placeholder="Please describe what happened, what you expected, and what steps you took..." required></textarea>
+        </div>
+        <button type="submit" class="btn">📤 Send Message</button>
+        <p class="note">By sending this message, you agree to our <a href="privacy-policy.html">Privacy Policy</a>. We will only use your email to respond to your request.</p>
+      </form>
+      <div class="success-msg" id="successMsg">
+        ✅ Message sent! We'll get back to you within 48 hours at the email you provided.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="index.html">Home</a> · <a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-of-service.html">Terms</a> · <a href="help.html">Help</a></p>
+    <p style="margin-top:8px">© 2026 OgreSleep. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      // In production, replace with actual form submission endpoint (e.g., Formspree, Netlify Forms)
+      const form = document.getElementById('supportForm');
+      const successMsg = document.getElementById('successMsg');
+      form.style.display = 'none';
+      successMsg.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
