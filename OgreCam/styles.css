@@ -37,7 +37,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--pink); outline-
   background: rgba(11, 11, 22, .88); backdrop-filter: blur(16px);
 }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-size: 1.1rem; font-weight: 800; letter-spacing: -.03em; text-decoration: none; white-space: nowrap; }
-.brand-mark { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 12px; background: linear-gradient(140deg, var(--lime), #75d9a0); color: #10111a; font-size: 1.25rem; }
+.brand-icon { display: block; width: 36px; height: 36px; flex: 0 0 36px; border-radius: 10px; background: #fff; object-fit: contain; }
 .brand-word span { color: var(--lime); }
 .nav-links { display: flex; align-items: center; gap: clamp(12px, 2.2vw, 28px); }
 .nav-links a { color: var(--muted); font-size: .9rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
