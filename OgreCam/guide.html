@@ -8,6 +8,7 @@
   <title>OgreCam Field Guide — Support</title>
   <link rel="icon" type="image/png" href="ogrecam-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js-dialogs');</script>
 </head>
 <body>
   <nav class="site-nav" aria-label="Main navigation">
@@ -28,45 +29,21 @@
       <p>Choose a camera look, take a photo, and find it in your local OgreVault. Start a party roll when you want a shared countdown and a little reveal at the end. Your captures stay in OgreCam until you choose to save or share them.</p>
       <div class="note"><strong>First launch:</strong> allow Camera access when iOS asks. OgreCam needs it to show the viewfinder and take a photo. If permission was denied, open <em>Settings → Apps → OgreCam → Camera</em>, enable it, then return to the app.</div>
 
-      <h2 id="looks">Choose a camera look</h2>
-      <p>Tap the look name or camera controls to choose a profile. Three camera looks are available for free, with additional looks and portrait backgrounds in OgreCam Pro. Pro options are marked in the app. You can also edit a saved photo later; the source photo is kept unchanged while you work on its look or background.</p>
+      <h2 id="topics-heading">Browse by topic</h2>
+      <p>Tap a card for the full walkthrough — steps, tips and the fine print, without scrolling through everything else.</p>
+      <div class="topic-grid">
+        <button type="button" class="topic-card help-orange" id="looks" data-dialog="dlg-looks" aria-haspopup="dialog"><span class="topic-icon" aria-hidden="true">◉</span><span class="topic-eyebrow">CAMERA</span><strong>Choose a camera look</strong><span class="topic-desc">Pick a look or backdrop, and edit a saved photo later.</span><span class="topic-more">Full steps <b aria-hidden="true">→</b></span></button>
 
-      <h2 id="party">Start now or plan ahead</h2>
-      <ol>
-        <li>Open <strong>Party Roll</strong> and choose <strong>Start now</strong> or <strong>Plan ahead</strong>.</li>
-        <li>Give the roll a title. Add a venue or city if you want it on your keepsake; this is text you type, not GPS data.</li>
-        <li>Choose a 12, 24 or 36-photo limit when available, and set the party options you want.</li>
-        <li>Start the roll and pass the phone around. The viewfinder offers a lighthearted prompt to help guests think of a shot.</li>
-        <li>When the roll is complete, choose a keepsake and the photos you want to feature.</li>
-      </ol>
-      <p>With OgreCam Pro, you can save a reusable setup, keep a local guest book, tag people in photos, add a host signature, remove the OgreCam mark from exports, and protect a roll's gallery with Face ID, Touch ID or the device passcode. Optional scheduled-party reminders use iOS notifications. A planned roll can be started on its scheduled day; you can reuse its setup to start on another day.</p>
-      <div class="note"><strong>Handing your phone to guests?</strong> Gallery protection locks access inside OgreCam. It cannot stop someone from leaving the app. To keep guests inside OgreCam, start Apple’s <a href="https://support.apple.com/111795" target="_blank" rel="noopener noreferrer">Guided Access</a> before passing over your device.</div>
+        <button type="button" class="topic-card help-teal" id="party" data-dialog="dlg-party" aria-haspopup="dialog"><span class="topic-icon" aria-hidden="true">✳</span><span class="topic-eyebrow">PARTY ROLL</span><strong>Start now or plan ahead</strong><span class="topic-desc">Set a title, a photo limit, and pass the phone around.</span><span class="topic-more">Full steps <b aria-hidden="true">→</b></span></button>
 
-      <h2 id="plans">Reuse a setup or guest list</h2>
-      <p>Open the <strong>Saved</strong> tab in Party Roll to find planned parties and reusable setups. A setup can keep its title, optional place, photo limit, gallery setting and selected guests, ready for a future night. In the <strong>Guests</strong> tab, add a name and an optional note such as a nickname or group. These details are stored in OgreCam on your device.</p>
-      <p>If you enable <strong>Remind me</strong> for a scheduled party, allow notifications when iOS asks. You can still keep and start the plan if notifications are off; change notification access in <em>Settings → Notifications → OgreCam</em>.</p>
+        <button type="button" class="topic-card help-violet" id="plans" data-dialog="dlg-plans" aria-haspopup="dialog"><span class="topic-icon" aria-hidden="true">♡</span><span class="topic-eyebrow">YOUR PEOPLE</span><strong>Reuse a setup or guest list</strong><span class="topic-desc">Save a setup and keep a local guest book for later.</span><span class="topic-more">Full steps <b aria-hidden="true">→</b></span></button>
 
-      <h2 id="gallery">Browse, import, save or share photos</h2>
-      <ol>
-        <li>Open <strong>OgreVault</strong> to browse captures and any photos you imported.</li>
-        <li>To import, choose photos with the iOS photo picker. With Pro, selected copies are added to OgreVault; OgreCam does not scan your whole Photos library.</li>
-        <li>Tap <strong>Select</strong> to choose individual photos or use <strong>Select All</strong>. Use <strong>Clear All</strong> to reset the selection.</li>
-        <li>Choose <strong>Save to Photos</strong>, <strong>Share</strong> or <strong>Delete</strong>. OgreCam asks you to confirm a batch deletion.</li>
-      </ol>
-      <p>Saving creates a copy in Apple Photos. Sharing opens the iOS share sheet, where you select a destination. Deleting from OgreCam does not remove copies you already saved or sent elsewhere. A capture keeps its saved original alongside the processed OgreCam image; a photo's detail view offers the original when available.</p>
-      <div class="note warning"><strong>Share sheet looks blank?</strong> Close it and try once more. If it is still blank, restart OgreCam and email us the iPhone or iPad model, iOS version, number of selected photos and whether the second attempt worked. Do not send the photos themselves.</div>
+        <button type="button" class="topic-card help-coral" id="gallery" data-dialog="dlg-gallery" aria-haspopup="dialog"><span class="topic-icon" aria-hidden="true">▧</span><span class="topic-eyebrow">OGREVAULT</span><strong>Browse, import, save or share</strong><span class="topic-desc">Import selected photos, then save, share or delete them.</span><span class="topic-more">Full steps <b aria-hidden="true">→</b></span></button>
 
-      <h2 id="keepsakes">Make a receipt, collage, book or album</h2>
-      <p>After a roll, open its keepsake editor and choose a format. A <strong>Party Receipt</strong> gathers the selected photos and party details in a film-style design; choose a paper color, then save, print or share it. A <strong>Story Collage</strong> makes a vertical still image for a quick share. A <strong>Party Book</strong> lets you arrange photos across pages, pair images and add captions. A <strong>Family Album</strong> can have custom covers and a short opening note. A <strong>Portfolio</strong> can include a title and an optional profile page with a name, role, bio and contact text. Your selections and text are used to create the artwork on your device.</p>
-      <p>You can bring selected photos from OgreVault or Apple Photos into a keepsake, choose favorites, add guest names or a signature, and adjust available colors and layout details. Some formats and customization options require Pro. Review an export before sharing: any name, caption, place or contact text you add may appear in that image or book.</p>
+        <button type="button" class="topic-card help-gold" id="keepsakes" data-dialog="dlg-keepsakes" aria-haspopup="dialog"><span class="topic-icon" aria-hidden="true">▤</span><span class="topic-eyebrow">KEEPSAKES</span><strong>Make a receipt, book or album</strong><span class="topic-desc">Turn a roll into a printable, shareable keepsake.</span><span class="topic-more">Full steps <b aria-hidden="true">→</b></span></button>
 
-      <h2 id="purchases">Purchases, restore and cancellation</h2>
-      <p>Plans are offered through Apple In-App Purchase. The Pro screen shows the storefront’s localized price and billing period before purchase. Subscriptions renew automatically unless cancelled through your Apple Account at least 24 hours before the current period ends. A lifetime purchase is a separate one-time product and does not cancel an active subscription.</p>
-      <ul>
-        <li>Choose <strong>Restore Purchases</strong> on the Pro screen if a previous purchase is missing. Use the Apple Account that made it.</li>
-        <li>Choose <strong>Manage Subscriptions</strong> on the Pro screen to review or cancel an Apple subscription.</li>
-        <li>Apple handles billing and purchase verification. OgreCam does not receive your payment-card details.</li>
-      </ul>
+        <button type="button" class="topic-card help-leaf" id="purchases" data-dialog="dlg-purchases" aria-haspopup="dialog"><span class="topic-icon" aria-hidden="true">✦</span><span class="topic-eyebrow">OGRECAM PRO</span><strong>Purchases, restore, cancel</strong><span class="topic-desc">Manage or restore a Pro plan through Apple.</span><span class="topic-more">Full steps <b aria-hidden="true">→</b></span></button>
+      </div>
 
       <h2 id="troubleshooting">Troubleshooting</h2>
       <details class="guide-answer"><summary id="black-viewfinder">The viewfinder is black</summary><p>Confirm Camera permission under iOS Settings, close other apps using the camera, then reopen OgreCam. Camera capture requires a physical device.</p></details>
@@ -80,6 +57,78 @@
     </article>
     <details class="toc toc-collapsible"><summary>Jump to a topic</summary><strong>In this guide</strong><a href="#start">Start here</a><a href="#looks">Camera looks</a><a href="#party">Party rolls</a><a href="#plans">Plans and guest lists</a><a href="#gallery">Gallery and imports</a><a href="#keepsakes">Keepsakes</a><a href="#purchases">Purchases</a><a href="#troubleshooting">Troubleshooting</a><a href="#contact">Contact</a></details>
   </main>
+
+  <dialog class="detail-dialog" id="dlg-looks" aria-labelledby="dlg-looks-title" open>
+    <div class="dialog-inner"><button type="button" class="dialog-close" data-close aria-label="Close">✕</button>
+      <p class="topic-eyebrow">CAMERA</p>
+      <h2 id="dlg-looks-title">Choose a camera look</h2>
+      <p>Tap the look name or camera controls to choose a profile. Three camera looks are available for free, with additional looks and portrait backgrounds in OgreCam Pro. Pro options are marked in the app. You can also edit a saved photo later; the source photo is kept unchanged while you work on its look or background.</p>
+    </div>
+  </dialog>
+
+  <dialog class="detail-dialog" id="dlg-party" aria-labelledby="dlg-party-title" open>
+    <div class="dialog-inner"><button type="button" class="dialog-close" data-close aria-label="Close">✕</button>
+      <p class="topic-eyebrow">PARTY ROLL</p>
+      <h2 id="dlg-party-title">Start now or plan ahead</h2>
+      <ol>
+        <li>Open <strong>Party Roll</strong> and choose <strong>Start now</strong> or <strong>Plan ahead</strong>.</li>
+        <li>Give the roll a title. Add a venue or city if you want it on your keepsake; this is text you type, not GPS data.</li>
+        <li>Choose a 12, 24 or 36-photo limit when available, and set the party options you want.</li>
+        <li>Start the roll and pass the phone around. The viewfinder offers a lighthearted prompt to help guests think of a shot.</li>
+        <li>When the roll is complete, choose a keepsake and the photos you want to feature.</li>
+      </ol>
+      <p>With OgreCam Pro, you can save a reusable setup, keep a local guest book, tag people in photos, add a host signature, remove the OgreCam mark from exports, and protect a roll's gallery with Face ID, Touch ID or the device passcode. Optional scheduled-party reminders use iOS notifications. A planned roll can be started on its scheduled day; you can reuse its setup to start on another day.</p>
+      <div class="note"><strong>Handing your phone to guests?</strong> Gallery protection locks access inside OgreCam. It cannot stop someone from leaving the app. To keep guests inside OgreCam, start Apple's <a href="https://support.apple.com/111795" target="_blank" rel="noopener noreferrer">Guided Access</a> before passing over your device.</div>
+    </div>
+  </dialog>
+
+  <dialog class="detail-dialog" id="dlg-plans" aria-labelledby="dlg-plans-title" open>
+    <div class="dialog-inner"><button type="button" class="dialog-close" data-close aria-label="Close">✕</button>
+      <p class="topic-eyebrow">YOUR PEOPLE</p>
+      <h2 id="dlg-plans-title">Reuse a setup or guest list</h2>
+      <p>Open the <strong>Saved</strong> tab in Party Roll to find planned parties and reusable setups. A setup can keep its title, optional place, photo limit, gallery setting and selected guests, ready for a future night. In the <strong>Guests</strong> tab, add a name and an optional note such as a nickname or group. These details are stored in OgreCam on your device.</p>
+      <p>If you enable <strong>Remind me</strong> for a scheduled party, allow notifications when iOS asks. You can still keep and start the plan if notifications are off; change notification access in <em>Settings → Notifications → OgreCam</em>.</p>
+    </div>
+  </dialog>
+
+  <dialog class="detail-dialog" id="dlg-gallery" aria-labelledby="dlg-gallery-title" open>
+    <div class="dialog-inner"><button type="button" class="dialog-close" data-close aria-label="Close">✕</button>
+      <p class="topic-eyebrow">OGREVAULT</p>
+      <h2 id="dlg-gallery-title">Browse, import, save or share photos</h2>
+      <ol>
+        <li>Open <strong>OgreVault</strong> to browse captures and any photos you imported.</li>
+        <li>To import, choose photos with the iOS photo picker. With Pro, selected copies are added to OgreVault; OgreCam does not scan your whole Photos library.</li>
+        <li>Tap <strong>Select</strong> to choose individual photos or use <strong>Select All</strong>. Use <strong>Clear All</strong> to reset the selection.</li>
+        <li>Choose <strong>Save to Photos</strong>, <strong>Share</strong> or <strong>Delete</strong>. OgreCam asks you to confirm a batch deletion.</li>
+      </ol>
+      <p>Saving creates a copy in Apple Photos. Sharing opens the iOS share sheet, where you select a destination. Deleting from OgreCam does not remove copies you already saved or sent elsewhere. A capture keeps its saved original alongside the processed OgreCam image; a photo's detail view offers the original when available.</p>
+      <div class="note warning"><strong>Share sheet looks blank?</strong> Close it and try once more. If it is still blank, restart OgreCam and email us the iPhone or iPad model, iOS version, number of selected photos and whether the second attempt worked. Do not send the photos themselves.</div>
+    </div>
+  </dialog>
+
+  <dialog class="detail-dialog" id="dlg-keepsakes" aria-labelledby="dlg-keepsakes-title" open>
+    <div class="dialog-inner"><button type="button" class="dialog-close" data-close aria-label="Close">✕</button>
+      <p class="topic-eyebrow">KEEPSAKES</p>
+      <h2 id="dlg-keepsakes-title">Make a receipt, collage, book or album</h2>
+      <p>After a roll, open its keepsake editor and choose a format. A <strong>Party Receipt</strong> gathers the selected photos and party details in a film-style design; choose a paper color, then save, print or share it. A <strong>Story Collage</strong> makes a vertical still image for a quick share. A <strong>Party Book</strong> lets you arrange photos across pages, pair images and add captions. A <strong>Family Album</strong> can have custom covers and a short opening note. A <strong>Portfolio</strong> can include a title and an optional profile page with a name, role, bio and contact text. Your selections and text are used to create the artwork on your device.</p>
+      <p>You can bring selected photos from OgreVault or Apple Photos into a keepsake, choose favorites, add guest names or a signature, and adjust available colors and layout details. Some formats and customization options require Pro. Review an export before sharing: any name, caption, place or contact text you add may appear in that image or book.</p>
+    </div>
+  </dialog>
+
+  <dialog class="detail-dialog" id="dlg-purchases" aria-labelledby="dlg-purchases-title" open>
+    <div class="dialog-inner"><button type="button" class="dialog-close" data-close aria-label="Close">✕</button>
+      <p class="topic-eyebrow">OGRECAM PRO</p>
+      <h2 id="dlg-purchases-title">Purchases, restore and cancellation</h2>
+      <p>Plans are offered through Apple In-App Purchase. The Pro screen shows the storefront's localized price and billing period before purchase. Subscriptions renew automatically unless cancelled through your Apple Account at least 24 hours before the current period ends. A lifetime purchase is a separate one-time product and does not cancel an active subscription.</p>
+      <ul>
+        <li>Choose <strong>Restore Purchases</strong> on the Pro screen if a previous purchase is missing. Use the Apple Account that made it.</li>
+        <li>Choose <strong>Manage Subscriptions</strong> on the Pro screen to review or cancel an Apple subscription.</li>
+        <li>Apple handles billing and purchase verification. OgreCam does not receive your payment-card details.</li>
+      </ul>
+    </div>
+  </dialog>
+
   <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><a class="brand" href="index.html"><img class="brand-icon" src="ogrecam-icon.png" alt=""><span class="brand-word">Ogre<span>Cam</span></span></a><p>Pass the camera. Keep the night.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="support.html">Support</a><a href="guide.html">Guide</a><a href="privacy.html">Privacy</a><a href="impressum.html">Impressum</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Terms of Use ↗</a></nav><p class="updated">© 2026 Suman Kumar · OgreCam</p></div></footer>
+  <script src="docs.js" defer></script>
 </body>
 </html>
